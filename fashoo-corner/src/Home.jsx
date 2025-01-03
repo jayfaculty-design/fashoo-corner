@@ -26,6 +26,9 @@ function Home() {
     <>
       <motion.div
         initial={{ opacity: 0 }}
+        whileInView={{
+          opacity: 1,
+        }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 1 }}
@@ -44,7 +47,18 @@ function Home() {
             />
           </div>
         </div>
-        <div className="flex flex-col text-center items-center gap-5 relative mt-16">
+        <motion.div
+          initial={{
+            opacity: 0,
+          }}
+          whileInView={{
+            opacity: 1,
+            transition: {
+              duration: 1,
+            },
+          }}
+          className="flex flex-col text-center items-center gap-5 relative mt-16"
+        >
           <NavLink
             onClick={() => setActiveNav(false)}
             to="shop"
@@ -66,10 +80,21 @@ function Home() {
           >
             about
           </Link>
-        </div>
+        </motion.div>
         <div className="flex flex-col items-center text-center relative gap-5 mt-32">
           <p className="text-center text-oranges">developer</p>
-          <div className="flex gap-5">
+          <motion.div
+            initial={{
+              opacity: 0,
+            }}
+            whileInView={{
+              opacity: 1,
+              transition: {
+                duration: 1,
+              },
+            }}
+            className="flex gap-5"
+          >
             <a href="" target="_blank">
               <FontAwesomeIcon
                 className="text-oranges"
@@ -94,7 +119,7 @@ function Home() {
             <a href="" className="text-oranges" target="_blank">
               <FontAwesomeIcon icon={faInstagram} size="xl" />
             </a>
-          </div>
+          </motion.div>
         </div>
       </motion.div>
       <div>

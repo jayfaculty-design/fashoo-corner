@@ -13,7 +13,18 @@ function About() {
         transition={{ duration: 1 }}
         className="flex flex-col  gap-10 items-center p-10"
       >
-        <div className="flex flex-col gap-3 items-center">
+        <motion.div
+          initial={{
+            opacity: 0,
+          }}
+          whileInView={{
+            opacity: 1,
+            transition: {
+              duration: 1,
+            },
+          }}
+          className="flex flex-col gap-3 items-center"
+        >
           <h1 className="text-2xl font-semibold text-black text-center">
             about
           </h1>
@@ -26,7 +37,7 @@ function About() {
             collections from emerging designers, Fashoo Corner is here to make
             your fashion journey seamless and enjoyable.
           </p>
-        </div>
+        </motion.div>
         <div className="flex flex-col gap-3 items-center">
           <h1 className="text-2xl font-semibold text-black text-center">
             our vision
@@ -37,7 +48,18 @@ function About() {
             tailored to their lifestyles.
           </p>
         </div>
-        <div className="flex flex-col gap-3 items-center">
+        <motion.div
+          initial={{
+            opacity: 0,
+          }}
+          whileInView={{
+            opacity: 1,
+            transition: {
+              duration: 1,
+            },
+          }}
+          className="flex flex-col gap-3 items-center"
+        >
           <h1 className="text-2xl font-semibold text-black text-center">
             what we offer
           </h1>
@@ -55,8 +77,19 @@ function About() {
               navigation, secure checkout, and fast delivery.
             </p>
           </div>
-        </div>
-        <div className="flex items-center flex-col">
+        </motion.div>
+        <motion.div
+          initial={{
+            opacity: 0,
+          }}
+          whileInView={{
+            opacity: 1,
+            transition: {
+              duration: 1,
+            },
+          }}
+          className="flex items-center flex-col"
+        >
           <h1 className="text-2xl font-semibold text-black text-center">
             our promise
           </h1>
@@ -66,7 +99,7 @@ function About() {
             Corner, every piece tells a story, and we’re here to help you tell
             yours.
           </p>
-        </div>
+        </motion.div>
       </motion.div>
     </>
   );
