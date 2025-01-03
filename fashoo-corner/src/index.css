@@ -6,6 +6,7 @@
   font-family: "Syne", serif;
   line-height: 1.5;
   font-weight: 400;
+  scroll-behavior: smooth;
 }
 body {
   margin: 0;

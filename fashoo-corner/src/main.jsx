@@ -7,18 +7,22 @@ import About from "./About";
 import Home from "./Home";
 import Shop from "./Shop";
 import Contact from "./Contact";
+import Header from "./Header";
+import { motion, AnimatePresence } from "framer-motion";
+import LocationProvider from "./LocationProvider";
+import RoutesWithAnimation from "./RoutesWithAnimation";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
-      <App>
-        <Routes>
-          <Route index path="/" element={<Home />} />
-          <Route path="about" element={<About />} />
-          <Route path="shop" element={<Shop />} />
-          <Route path="contact" element={<Contact />} />
-        </Routes>
-      </App>
+      <AnimatePresence>
+        <App>
+          <Header />
+          <LocationProvider>
+            <RoutesWithAnimation />
+          </LocationProvider>
+        </App>
+      </AnimatePresence>
     </BrowserRouter>
   </StrictMode>
 );
