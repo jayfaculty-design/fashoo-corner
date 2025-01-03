@@ -8,6 +8,10 @@ function Shop() {
     },
     final: {
       y: "0vh",
+      transition: {
+        type: "spring",
+        mass: 0.7,
+      },
     },
   };
   return (
