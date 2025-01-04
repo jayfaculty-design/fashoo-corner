@@ -22,6 +22,7 @@ function Contact() {
       initial="initial"
       animate="final"
     >
+      <Header />
       <div className="section h-[100vh] lg:flex lg:items-center lg:justify-around">
         <div>
           <p className="text-2xl font-semibold text-black text-center mt-10 relative">

@@ -11,7 +11,9 @@ function RoutesWithAnimation() {
     <Routes location={location}>
       <Route index path="/" element={<Home />} />
       <Route path="about" element={<About />} />
-      <Route path="shop" element={<Shop />} />
+      <Route path="shop" element={<Shop />}>
+        
+      </Route>
       <Route path="contact" element={<Contact />} />
     </Routes>
   );

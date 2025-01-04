@@ -11,13 +11,14 @@ import Header from "./Header";
 import { motion, AnimatePresence } from "framer-motion";
 import LocationProvider from "./LocationProvider";
 import RoutesWithAnimation from "./RoutesWithAnimation";
+import Menu from "./Menu";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
       <AnimatePresence>
         <App>
-          <Header />
+          <Menu />
           <LocationProvider>
             <RoutesWithAnimation />
           </LocationProvider>

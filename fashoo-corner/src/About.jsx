@@ -22,6 +22,7 @@ function About() {
       animate="final"
       className="about component"
     >
+      <Header />
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

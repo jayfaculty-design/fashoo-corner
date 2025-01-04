@@ -36,7 +36,8 @@ function Home() {
   const { activeNav, setActiveNav } = useContext(NavContext);
   return (
     <motion.div variants={routeVariants} initial="initial" animate="final">
-      <motion.div
+      <Header />
+      {/* <motion.div
         initial={{ opacity: 0 }}
         whileInView={{
           opacity: 1,
@@ -133,8 +134,8 @@ function Home() {
             </a>
           </motion.div>
         </div>
-      </motion.div>
-      <div></div>
+      </motion.div> */}
+
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
