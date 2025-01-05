@@ -10,7 +10,12 @@ export default {
       hashbgs: "#e6e6e6",
       oranges: "#df5408",
     },
-    extend: {},
+    extend: {
+      fontFamily: {
+        syne: ["Syne", "serif"],
+        bodoni: ["Bodoni Moda", "serif"],
+      },
+    },
   },
   plugins: [require("flowbite/plugin"), require("daisyui")],
 };

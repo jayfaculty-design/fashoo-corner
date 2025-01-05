@@ -14,7 +14,16 @@ import { Link, Outlet, NavLink } from "react-router";
 import Fashion from "./Fashion";
 import Beauty from "./Beauty";
 import Home2 from "./Home2";
+import Slider from "react-slick";
+
 function Shop() {
+  var settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
   const routeVariants = {
     initial: {
       y: "100vh",
@@ -73,7 +82,7 @@ function Shop() {
                   setMenuIconShow(true);
                 }}
               />
-              <div className="hidden lg:flex item-center gap-5 text-[14px]">
+              <div className="hidden lg:flex item-center gap-5 text-[14px] font-sans">
                 <Link
                   to="fashion"
                   className=" text-oranges font-semibold lowercase hover:text-oranges"
@@ -205,72 +214,37 @@ function Shop() {
         </div>
       </div>
 
-      <div
-        id="default-carousel"
-        className="relative w-full"
-        data-carousel="slide"
-      >
-        {/* Carousel wrapper */}
-        <div className="relative h-64 overflow-hidden rounded-lg md:h-96 mt-16">
-          {/* Item 1 */}
-          <div className="duration-700 ease-in-out" data-carousel-item>
-            <img
-              src="/model2.jpg"
-              className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-              alt="Slide 1"
-            />
+      {/* Carousel */}
+      <Slider className="mt-10" {...settings}>
+        <div>
+          <img src="/model1.jpg" alt="" />
+        </div>
+        <div>
+          <img src="/model2.jpg" alt="" />
+        </div>
+        <div>
+          <div className="bg-blue-800">
+            <h1>THE DESIGNER STYLE</h1>
+            <h1>
+              UP TO <br /> 60% OFF
+            </h1>
+            <p>Our designer sale even got better</p>
           </div>
         </div>
-        {/* Slider indicators */}
-        <div className="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
-          <button
-            type="button"
-            className="w-3 h-3 rounded-full"
-            aria-current="true"
-            aria-label="Slide 1"
-            data-carousel-slide-to="0"
-          ></button>
-          <button
-            type="button"
-            className="w-3 h-3 rounded-full"
-            aria-current="false"
-            aria-label="Slide 2"
-            data-carousel-slide-to="1"
-          ></button>
-          <button
-            type="button"
-            className="w-3 h-3 rounded-full"
-            aria-current="false"
-            aria-label="Slide 3"
-            data-carousel-slide-to="2"
-          ></button>
-          <button
-            type="button"
-            className="w-3 h-3 rounded-full"
-            aria-current="false"
-            aria-label="Slide 4"
-            data-carousel-slide-to="3"
-          ></button>
-          <button
-            type="button"
-            className="w-3 h-3 rounded-full"
-            aria-current="false"
-            aria-label="Slide 5"
-            data-carousel-slide-to="4"
-          ></button>
-        </div>
-      </div>
+      </Slider>
 
-      <div className="new-panel border-b flex flex-col items-center justify-center gap-10 text-black p-14 pb-5">
+      {/* End Carousel */}
+
+      <div className="new-panel border-b flex flex-col items-center justify-center gap-10 text-black p-14 pb-5 font-sans">
         <div className="new-panel-top flex flex-col gap-10">
           <div className="text-center flex gap-3 flex-col ">
-            <p className="text-4xl lowercase">WHAT'S NEW</p>
+            <p className="text-4xl uppercase">WHAT'S NEW</p>
             <button className="lowercase border-b border-black w-fit self-center">
               Shop now
             </button>
           </div>
           <div className="text-center flex gap-3 flex-col">
-            <p className="text-4xl lowercase">WHAT'S NEXT</p>
+            <p className="text-4xl uppercase">WHAT'S NEXT</p>
             <button className="lowercase border-b border-black w-fit self-center">
               Shop shoes
             </button>
@@ -286,7 +260,7 @@ function Shop() {
         <div className="section-1 relative mt-3 border border-t-neutral-400 border-b-neutral-400 p-3">
           <div className="flex items-center flex-row gap-4">
             <div className="image w-[50%]">
-              <img src="girl.png" className="h-full" />
+              <img src="/girl.png" className="h-full" />
             </div>
             <div className="description gap-5 relative p-2 flex flex-col w-[50%] text-black">
               <div className="text-3xl">
@@ -303,7 +277,7 @@ function Shop() {
         <div className="section-2 relative mt-3 border border-t-neutral-400 border-b-neutral-400 p-3">
           <div className="flex items-center flex-row gap-4">
             <div className="image w-[50%]">
-              <img src="girl.png" className="h-full" />
+              <img src="/girl.png" className="h-full" />
             </div>
             <div className="description gap-5 relative p-2 flex flex-col w-[50%] text-black">
               <div className="text-3xl">
@@ -338,7 +312,7 @@ function Shop() {
         >
           <div className="flex items-center flex-row gap-4">
             <div className="image w-[50%]">
-              <img src="girl.png" className="h-full" />
+              <img src="/girl.png" className="h-full" />
             </div>
             <div className="description gap-5 relative p-2 flex flex-col w-[50%] text-black">
               <div className="text-3xl">
@@ -356,7 +330,7 @@ function Shop() {
 
       {/* faculty closet */}
       <div className="p-5 relative mt-5">
-        <p className="closet-heading before:bg-neutral-400 after:bg-neutral-400 text-center text-2xl lowercase font-semibold text-oranges">
+        <p className="font-sans closet-heading before:bg-neutral-400 after:bg-neutral-400 text-center text-2xl lowercase font-normal text-oranges">
           FACULTY CLOSET
         </p>
       </div>
