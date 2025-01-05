@@ -21,7 +21,7 @@ function Shop() {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: 1,
     slidesToScroll: 1,
     cssEase: "linear",
     arrows: false,
@@ -83,7 +83,8 @@ function Shop() {
   const [menuIconShow, setMenuIconShow] = useState(false);
   const [closeIconShow, setCloseIconShow] = useState(false);
 
-  const URL = "https://www.asos.com/men/t-shirts-vests/cat/?cid=7616";
+  const URL =
+    "https://asos2.p.rapidapi.com/products/v2/list?store=US&offset=0&categoryId=4209&country=US&sort=freshness&currency=USD&sizeSchema=US&limit=10&lang=en-US";
 
   const [products, setProducts] = useState([]);
   useEffect(() => {
@@ -92,11 +93,14 @@ function Shop() {
         const response = await axios({
           method: "get",
           url: URL,
-          source: "universal",
+          headers: {
+            "x-rapidapi-host": "asos2.p.rapidapi.com",
+            "x-rapidapi-key":
+              "848cdd11b1msh7adfec8147814dbp135c7bjsnaffe2ec3ddb2",
+          },
         });
-        // console.log(response.data.data.products);
-        // setProducts(response.data.data.products);
-        console.log(response.data);
+        console.log(response.data.products);
+        setProducts(response.data.products);
       } catch (error) {
         if (error.response) {
           console.log("Error Response:", error.response.data);
@@ -409,9 +413,129 @@ function Shop() {
       </div>
 
       {/* faculty closet */}
-      <div className="p-5 relative mt-5">
+      <div className="p-2 relative mt-5">
         <p className="font-sans closet-heading before:bg-neutral-400 after:bg-neutral-400 text-center text-2xl lowercase font-normal text-oranges">
-          tommy closet
+          nike closet
+        </p>
+
+        <div className="flex flex-wrap p-2">
+          {products.map((product) => {
+            return (
+              <div key={product.id} className="relative mt-10 w-1/2">
+                <div className="flex p-5 cursor-pointer flex-col items-center justify-center gap-2 w-fit">
+                  <img
+                    className="w-44"
+                    src={`https://${product.imageUrl}`}
+                    alt=""
+                  />
+                  <p className="text-center relative text-[14px] mt-2 uppercase text-oranges">
+                    {product.brandName}
+                  </p>
+                  <p className="text-center text-[14px]">{product.name}</p>
+                  <p className="text-center">${product.price.current.value}</p>
+                  <button className="border border-black p-2">
+                    add to cart
+                  </button>
+                </div>
+              </div>
+            );
+            // console.log(product.imageUrl);
+          })}
+        </div>
+      </div>
+
+      {/* beyond fashion */}
+      <div className="relative mt-5">
+        <p className="font-sans closet-heading before:bg-neutral-400 after:bg-neutral-400 text-center text-2xl lowercase font-normal text-oranges">
+          beyond fashion
+        </p>
+
+        <div className="some-section relative mt-10">
+          <div className="section-1 relative mt-3 border p-3">
+            <div className="flex items-center flex-row gap-4">
+              <div className="image w-[50%]">
+                <img
+                  src="https://img.freepik.com/free-photo/medium-shot-woman-with-pink-outfit_23-2149068995.jpg?t=st=1736090422~exp=1736094022~hmac=435f3ff5396e236d967f7c84f65b6ba6ed84c28f196c1b05390a1bbad6e394bd&w=360"
+                  className="h-full"
+                />
+              </div>
+              <div className="description gap-5 relative p-2 flex flex-col w-[50%] text-black">
+                <div className="text-3xl">
+                  <p>Erderm Pre Fall 25: Paintly Pronts</p>
+                </div>
+                <div>
+                  <button className="lowercase border-b border-black w-fit">
+                    Shop pants
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="section-2 relative mt-3 border border-t-neutral-400  p-3">
+            <div className="flex items-center flex-row gap-4">
+              <div className="image w-[50%]">
+                <img
+                  src="https://img.freepik.com/free-photo/portrait-fashionable-boy-posing_23-2148184645.jpg?t=st=1736096751~exp=1736100351~hmac=5c861bc7dcc6e44a811b1561a425a13a40b7aba53027a409ef3b2c4a5c08e57d&w=360"
+                  className="h-full"
+                />
+              </div>
+              <div className="description gap-5 relative p-2 flex flex-col w-[50%] text-black">
+                <div className="text-3xl">
+                  <p>Erderm Pre Fall 25: Paintly Pronts</p>
+                </div>
+                <div>
+                  <button className="lowercase border-b border-black w-fit">
+                    Shop now
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <motion.div
+            initial={{
+              opacity: 0,
+              scale: 1.2,
+              width: "70%",
+            }}
+            whileInView={{
+              opacity: 1,
+              scale: 1,
+              width: "100%",
+              transition: {
+                duration: 1,
+              },
+            }}
+            viewport={{
+              once: true,
+            }}
+            className="section-3 relative mt-3 border border-t-neutral-400 p-3"
+          >
+            <div className="flex items-center flex-row gap-4">
+              <div className="image w-[50%]">
+                <img
+                  src="https://img.freepik.com/free-photo/portrait-young-handsome-male_23-2148884404.jpg?t=st=1736097032~exp=1736100632~hmac=4903b21b4de892867a137fd647ac345e7b8699359daa82238760a15d8b73025f&w=360"
+                  className="h-full"
+                />
+              </div>
+              <div className="description gap-5 relative p-2 flex flex-col w-[50%] text-black">
+                <div className="text-3xl">
+                  <p>Trending Now: Citrus Hues, Spectacles & More</p>
+                </div>
+                <div>
+                  <button className="lowercase border-b border-black w-fit">
+                    Shop pants
+                  </button>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* new arrivals */}
+      <div className="relative mt-5">
+        <p className="font-sans closet-heading before:bg-neutral-400 after:bg-neutral-400 text-center text-2xl lowercase font-normal text-oranges">
+          new arrivals
         </p>
       </div>
     </motion.div>
