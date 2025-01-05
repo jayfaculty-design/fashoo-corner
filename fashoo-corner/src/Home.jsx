@@ -178,7 +178,7 @@ function Home() {
           {/* <button className="capitalize border border-oranges p-2 w-36 bg-oranges text-hashbgs transition-all ease-in-out hover:bg-black hover:border-hashbgs">
             Shop Now
           </button> */}
-          <NavLink to="shop">
+          <NavLink to="shop/fashion">
             <button
               type="button"
               class="text-white bg-oranges hover:bg-black focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"

@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "./Header";
-import { motion } from "framer-motion";
+import { motion, time } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBagShopping,
@@ -15,14 +15,53 @@ import Fashion from "./Fashion";
 import Beauty from "./Beauty";
 import Home2 from "./Home2";
 import Slider from "react-slick";
-
+import axios from "axios";
 function Shop() {
+  var productSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    cssEase: "linear",
+    arrows: false,
+  };
   var settings = {
     dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    cssEase: "linear",
+    arrows: false,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    // responsive: [
+    //   {
+    //     breakpoint: 1024,
+    //     settings: {
+    //       slidesToShow: 1,
+    //       slidesToScroll: 1,
+    //       infinite: true,
+    //       dots: true,
+    //     },
+    //   },
+    //   {
+    //     breakpoint: 600,
+    //     settings: {
+    //       slidesToShow: 1,
+    //       slidesToScroll: 1,
+    //       initialSlide: 2,
+    //     },
+    //   },
+    //   {
+    //     breakpoint: 480,
+    //     settings: {
+    //       slidesToShow: 1,
+    //       slidesToScroll: 1
+    //     }
+    //   }
+    // ],
   };
   const routeVariants = {
     initial: {
@@ -43,6 +82,34 @@ function Shop() {
   const [mobileMenuShow, setMobileMenuShow] = useState(false);
   const [menuIconShow, setMenuIconShow] = useState(false);
   const [closeIconShow, setCloseIconShow] = useState(false);
+
+  const URL = "https://www.asos.com/men/t-shirts-vests/cat/?cid=7616";
+
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios({
+          method: "get",
+          url: URL,
+          source: "universal",
+        });
+        // console.log(response.data.data.products);
+        // setProducts(response.data.data.products);
+        console.log(response.data);
+      } catch (error) {
+        if (error.response) {
+          console.log("Error Response:", error.response.data);
+        } else {
+          console.log("Error", error.message);
+        }
+      }
+    };
+
+    const timer = setTimeout(fetchData, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
   return (
     <motion.div
       variants={routeVariants}
@@ -201,7 +268,7 @@ function Shop() {
         } fixed inset-0 top-16 z-50 hidden`}
       >
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-        <div className="nav-menu absolute top-0 left-0 bg-white w-1/2 h-full shadow-xl overflow-y-auto">
+        <div className="nav-menu absolute top-0 left-0 bg-white w-[70%] h-full shadow-xl overflow-y-auto">
           <div className="tabs flex items-center justify-between p-5 text-[14px] bg-neutral-100">
             <NavLink className="" to="fashion">
               FASHION
@@ -216,10 +283,10 @@ function Shop() {
 
       {/* Carousel */}
       <Slider className="mt-16" {...settings}>
-        <div>
+        <div className="h-80">
           <img src="/model1.jpg" alt="" />
         </div>
-        <div>
+        <div className="h-80">
           <img src="/model2.jpg" alt="" />
         </div>
         <div>
@@ -242,13 +309,13 @@ function Shop() {
       <div className="new-panel border-b flex flex-col items-center justify-center gap-10 text-black p-14 pb-5 font-sans">
         <div className="new-panel-top flex flex-col gap-10">
           <div className="text-center flex gap-3 flex-col ">
-            <p className="text-4xl uppercase">WHAT'S NEW</p>
+            <p className="headd text-3xl uppercase">WHAT'S NEW</p>
             <button className="lowercase border-b border-black w-fit self-center">
               Shop now
             </button>
           </div>
           <div className="text-center flex gap-3 flex-col">
-            <p className="text-4xl uppercase">WHAT'S NEXT</p>
+            <p className="headd text-3xl uppercase">WHAT'S NEXT</p>
             <button className="lowercase border-b border-black w-fit self-center">
               Shop shoes
             </button>
@@ -256,15 +323,18 @@ function Shop() {
         </div>
 
         <div className="new-panel-down relative mt-5">
-          <p className="">THE LATEST LIST</p>
+          <p className="headd">THE LATEST LIST</p>
         </div>
       </div>
       {/* some section */}
       <div className="some-section">
-        <div className="section-1 relative mt-3 border border-t-neutral-400 border-b-neutral-400 p-3">
+        <div className="section-1 relative mt-3 border border-t-neutral-400 p-3">
           <div className="flex items-center flex-row gap-4">
             <div className="image w-[50%]">
-              <img src="/girl.png" className="h-full" />
+              <img
+                src="https://img.freepik.com/free-photo/medium-shot-woman-with-pink-outfit_23-2149068995.jpg?t=st=1736090422~exp=1736094022~hmac=435f3ff5396e236d967f7c84f65b6ba6ed84c28f196c1b05390a1bbad6e394bd&w=360"
+                className="h-full"
+              />
             </div>
             <div className="description gap-5 relative p-2 flex flex-col w-[50%] text-black">
               <div className="text-3xl">
@@ -278,10 +348,13 @@ function Shop() {
             </div>
           </div>
         </div>
-        <div className="section-2 relative mt-3 border border-t-neutral-400 border-b-neutral-400 p-3">
+        <div className="section-2 relative mt-3 border border-t-neutral-400  p-3">
           <div className="flex items-center flex-row gap-4">
             <div className="image w-[50%]">
-              <img src="/girl.png" className="h-full" />
+              <img
+                src="https://img.freepik.com/free-photo/portrait-fashionable-boy-posing_23-2148184645.jpg?t=st=1736096751~exp=1736100351~hmac=5c861bc7dcc6e44a811b1561a425a13a40b7aba53027a409ef3b2c4a5c08e57d&w=360"
+                className="h-full"
+              />
             </div>
             <div className="description gap-5 relative p-2 flex flex-col w-[50%] text-black">
               <div className="text-3xl">
@@ -316,7 +389,10 @@ function Shop() {
         >
           <div className="flex items-center flex-row gap-4">
             <div className="image w-[50%]">
-              <img src="/girl.png" className="h-full" />
+              <img
+                src="https://img.freepik.com/free-photo/portrait-young-handsome-male_23-2148884404.jpg?t=st=1736097032~exp=1736100632~hmac=4903b21b4de892867a137fd647ac345e7b8699359daa82238760a15d8b73025f&w=360"
+                className="h-full"
+              />
             </div>
             <div className="description gap-5 relative p-2 flex flex-col w-[50%] text-black">
               <div className="text-3xl">
@@ -335,7 +411,7 @@ function Shop() {
       {/* faculty closet */}
       <div className="p-5 relative mt-5">
         <p className="font-sans closet-heading before:bg-neutral-400 after:bg-neutral-400 text-center text-2xl lowercase font-normal text-oranges">
-          FACULTY CLOSET
+          tommy closet
         </p>
       </div>
     </motion.div>
