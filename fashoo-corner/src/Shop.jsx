@@ -215,7 +215,7 @@ function Shop() {
       </div>
 
       {/* Carousel */}
-      <Slider className="mt-10" {...settings}>
+      <Slider className="mt-16" {...settings}>
         <div>
           <img src="/model1.jpg" alt="" />
         </div>
@@ -223,12 +223,16 @@ function Shop() {
           <img src="/model2.jpg" alt="" />
         </div>
         <div>
-          <div className="bg-blue-800">
-            <h1>THE DESIGNER STYLE</h1>
-            <h1>
-              UP TO <br /> 60% OFF
+          <div className="bg-blue-900 flex flex-col text-white items-center justify-center gap-4 p-10 h-80">
+            <h1 className="text-white">THE DESIGNER SALE</h1>
+            <h1 className="text-5xl text-center">
+              <span className="text-yellow-300">UP TO</span> <br /> 70% OFF
             </h1>
-            <p>Our designer sale even got better</p>
+            <p className="text-center text-[12px] font-light">
+              Our designer sale even got better <br /> Dresses, faculty
+              collection <br /> and more are now up to 70% off
+            </p>
+            <button className="border-b">shop sale</button>
           </div>
         </div>
       </Slider>
