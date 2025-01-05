@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 :root {
   font-family: "Syne", serif;
   line-height: 1.5;
@@ -12,8 +13,66 @@
 body {
   margin: 0;
   background: #e6e6e6;
+  color: black;
 }
 
 .nav-bar.show {
   display: block;
+}
+.closet-heading::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  margin-top: 15px;
+  width: 30%;
+  height: 1px;
+
+
+
+}
+.closet-heading::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  margin-top: 15px;
+  width: 30%;
+  height: 1px;
+
+
+}
+.search-box-mb.show{
+  display: flex;
+}
+.search-close.show {
+  display: flex;
+}
+.search-open.hide {
+  display: none;
+}
+.search-open.show {
+  display: flex;
+}
+.nav-menu {
+  scrollbar-width: none; /* For Firefox */
+}
+.nav-menu::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
+}
+.nav-menu{
+  scrollbar-width: none;
+}
+.tabs a.active {
+  font-weight: 100;
+  text-decoration: wavy underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 5px;
+}
+.nav-menu-content.show{
+  display: block;
+}
+.close-icon.show{
+  display: block;
+}
+.menu-btn.hide{
+  display: none;
 }
