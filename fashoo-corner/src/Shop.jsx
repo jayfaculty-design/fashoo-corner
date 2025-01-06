@@ -87,7 +87,8 @@ function Shop() {
   const [menuIconShow, setMenuIconShow] = useState(false);
   const [closeIconShow, setCloseIconShow] = useState(false);
 
-  const { setMobileMenuShow, products, loading } = useContext(NavContext);
+  const { setMobileMenuShow, products, loading, menClothing } =
+    useContext(NavContext);
 
   return (
     <motion.div
@@ -266,7 +267,7 @@ function Shop() {
 
       {/* End Carousel */}
 
-      <div className="new-panel border-b flex flex-col items-center justify-center gap-10 text-black p-14 pb-5 font-sans">
+      <div className="new-panel border-b flex flex-col items-center justify-center gap-10 text-black p-14 pb-5 font-bodoni">
         <div className="new-panel-top flex flex-col gap-10">
           <div className="text-center flex gap-3 flex-col ">
             <p className="headd text-3xl uppercase">WHAT'S NEW</p>
@@ -283,7 +284,7 @@ function Shop() {
         </div>
 
         <div className="new-panel-down relative mt-5">
-          <p className="headd">THE LATEST LIST</p>
+          <p className="headd font-bodoni uppercase">THE LATEST LIST</p>
         </div>
       </div>
       {/* some section */}
@@ -529,13 +530,144 @@ function Shop() {
         </div>
       </div>
 
-      {/* new arrivals */}
-      <div className="relative mt-5">
-        <p className="font-sans closet-heading before:bg-neutral-400 after:bg-neutral-400 text-center text-2xl lowercase font-normal text-oranges">
+      {/* w closet */}
+      <div className="relative mt-5 pt-5 bg-white">
+        <p className="font-bodoni closet-heading text-center uppercase underline underline-offset-4 font-normal text-black">
           w closet
         </p>
+        {loading && (
+          <div className="flex items-center justify-center relative mt-16">
+            <span className="loading loading-spinner text-primary"></span>
+            <span className="loading loading-spinner text-secondary"></span>
+            <span className="loading loading-spinner text-accent"></span>
+            <span className="loading loading-spinner text-neutral"></span>
+            <span className="loading loading-spinner text-info"></span>
+            <span className="loading loading-spinner text-success"></span>
+            <span className="loading loading-spinner text-warning"></span>
+            <span className="loading loading-spinner text-error"></span>
+          </div>
+        )}
+        <motion.div
+          initial={{
+            opacity: 0,
+          }}
+          whileInView={{
+            opacity: 1,
+            transition: {
+              duration: 2,
+            },
+          }}
+          viewport={{
+            once: true,
+          }}
+          className="grid grid-cols-2 grid-rows- gap-x-4 gap-y-7 p-4"
+        >
+          {menClothing.map((product) => {
+            return (
+              <div
+                key={product.id}
+                className="flex gap-2 flex-col mt-5 items-center hover:border-black hover:borde rounded-md"
+              >
+                <div className="flex h-96 p-5 cursor-pointer flex-col items-center justify-center gap-2 w-fit">
+                  <img className="w-44 h-44" src={`${product.image}`} alt="" />
+                  <p className="text-center relative text-[14px] mt-2 uppercase text-oranges">
+                    {product.category}
+                  </p>
+                  <p className="text-center text-[14px]">{product.title}</p>
+                  <p className="text-center">${product.price}</p>
+                  <button className="border border-black p-2 ">
+                    add to cart
+                  </button>
+                </div>
+              </div>
+            );
+            // console.log(product.imageUrl);
+          })}
+        </motion.div>
       </div>
-
+      <div className="flex items-center justify-center">
+        <h1 className="font-bodoni text-center relative mt-5">EDITOR'S PICK</h1>
+      </div>
+      <div className="some-section relative mt-5">
+        <div className="section-1 relative mt-3 border p-3">
+          <div className="flex items-center flex-row gap-4">
+            <div className="image w-[50%]">
+              <img
+                src="https://img.freepik.com/premium-photo/some-black-people_1187049-319.jpg?w=360"
+                className="h-full"
+              />
+            </div>
+            <div className="description gap-5 relative p-2 flex flex-col w-[50%] text-black">
+              <div className="text-3xl">
+                <p>Godfred's Closet</p>
+              </div>
+              <div>
+                <button className="lowercase border-b border-black w-fit">
+                  shop now
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="section-2 relative mt-3 border border-t-neutral-400  p-3">
+          <div className="flex items-center flex-row gap-4">
+            <div className="image w-[50%]">
+              <img
+                src="https://img.freepik.com/premium-photo/some-black-people_1187049-275.jpg?w=360"
+                className="h-full"
+              />
+            </div>
+            <div className="description gap-5 relative p-2 flex flex-col w-[50%] text-black">
+              <div className="text-3xl">
+                <p>BestSellers</p>
+              </div>
+              <div>
+                <button className="lowercase border-b border-black w-fit">
+                  Shop now
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <motion.div
+          initial={{
+            opacity: 0,
+            scale: 1.2,
+            width: "70%",
+          }}
+          whileInView={{
+            opacity: 1,
+            scale: 1,
+            width: "100%",
+            transition: {
+              duration: 1,
+            },
+          }}
+          viewport={{
+            once: true,
+          }}
+          className="section-3 relative mt-3 border border-t-neutral-400 p-3 border-b-neutral-400 pb-10 "
+        >
+          <div className="flex items-center flex-row gap-4">
+            <div className="image w-[50%]">
+              <img
+                src="https://img.freepik.com/premium-photo/elegant-african-american-woman-white-dress-posed-gracefully-against-brown-backdrop_1192423-2040.jpg?w=360"
+                className="h-full"
+              />
+            </div>
+            <div className="description gap-5 relative p-2 flex flex-col w-[50%] text-black">
+              <div className="text-3xl">
+                <p>Jewelries</p>
+              </div>
+              <div>
+                <button className="lowercase border-b border-black w-fit">
+                  Shop now
+                </button>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
       <Footer />
     </motion.div>
   );

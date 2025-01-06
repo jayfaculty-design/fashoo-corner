@@ -14,6 +14,7 @@ export default function App({ children }) {
   const [products, setProducts] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(true);
+  const [menClothing, setMenClothing] = useState([]);
 
   const URL =
     "https://asos2.p.rapidapi.com/products/v2/list?store=US&offset=0&categoryId=4209&country=US&sort=freshness&currency=USD&sizeSchema=US&limit=6&lang=en-US";
@@ -51,6 +52,20 @@ export default function App({ children }) {
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    axios({
+      method: "get",
+      url: "https://fakestoreapi.com/products/category/men's%20clothing?limit=4",
+    })
+      .then((response) => {
+        console.log(response.data);
+        setMenClothing(response.data);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
+
   return (
     <NavContext.Provider
       value={{
@@ -70,6 +85,7 @@ export default function App({ children }) {
         setProducts,
         errorMessage,
         loading,
+        menClothing,
       }}
     >
       {children}
