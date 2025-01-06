@@ -15,7 +15,7 @@ function Beauty() {
           <p className="font-extralight text-[15px]">{">"}</p>
         </div>
         <div className="border-b-neutral-200 border-b pb-3 pt-3 cursor-pointer flex justify-between">
-          <p>Beauty</p>
+          <p>explore Beauty</p>
           <p className="font-extralight text-[15px]">{">"}</p>
         </div>
       </div>
@@ -29,21 +29,21 @@ function Beauty() {
           />
         </div>
         <div className="cursor-pointer flex items-center justify-between">
-          <p>brands</p>
+          <p>clothing</p>
           <FontAwesomeIcon
             className="text-[12px] text-neutral-500"
             icon={faAdd}
           />
         </div>
         <div className="cursor-pointer flex items-center justify-between">
-          <p>new in</p>
+          <p>shoes</p>
           <FontAwesomeIcon
             className="text-[12px] text-neutral-500"
             icon={faAdd}
           />
         </div>
         <div className="cursor-pointer flex items-center justify-between">
-          <p>edits</p>
+          <p>bags</p>
           <FontAwesomeIcon
             className="text-[12px] text-neutral-500"
             icon={faAdd}
@@ -63,7 +63,7 @@ function Beauty() {
         <h1>Featured</h1>
         <div className="flex flex-col gap-4 cursor-pointer">
           <img src="/moda.jpg" alt="" />
-          <p>godfred's closet</p>
+          <p>lindana's clsoet</p>
         </div>
       </div>
 

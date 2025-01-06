@@ -12,6 +12,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import LocationProvider from "./LocationProvider";
 import RoutesWithAnimation from "./RoutesWithAnimation";
 import Menu from "./Menu";
+import Shopmenu from "./Shopmenu";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -19,6 +20,7 @@ createRoot(document.getElementById("root")).render(
       <AnimatePresence>
         <App>
           <Menu />
+          <Shopmenu />
           <LocationProvider>
             <RoutesWithAnimation />
           </LocationProvider>

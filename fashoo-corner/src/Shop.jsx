@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Header from "./Header";
 import { motion, time } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,6 +9,8 @@ import {
   faHeartBroken,
   faSearch,
   faTimes,
+  faGreaterThan,
+  faRightLong,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link, Outlet, NavLink } from "react-router";
 import Fashion from "./Fashion";
@@ -16,6 +18,7 @@ import Beauty from "./Beauty";
 import Home2 from "./Home2";
 import Slider from "react-slick";
 import axios from "axios";
+import { NavContext } from "./App";
 
 function Shop() {
   var productSettings = {
@@ -79,46 +82,12 @@ function Shop() {
 
   const [searchBox, setSearchBox] = useState(false);
   const [searchCloseICon, setSearchCloseIcon] = useState(false);
-  const [loading, setLoading] = useState(true);
-  const [errorMessage, setErrorMessage] = useState("");
-  const [mobileMenuShow, setMobileMenuShow] = useState(false);
+
   const [menuIconShow, setMenuIconShow] = useState(false);
   const [closeIconShow, setCloseIconShow] = useState(false);
 
-  const URL =
-    "https://asos2.p.rapidapi.com/products/v2/list?store=US&offset=0&categoryId=4209&country=US&sort=freshness&currency=USD&sizeSchema=US&limit=6&lang=en-US";
+  const { setMobileMenuShow, products, loading } = useContext(NavContext);
 
-  const [products, setProducts] = useState([]);
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios({
-          method: "get",
-          url: URL,
-          headers: {
-            "x-rapidapi-host": "asos2.p.rapidapi.com",
-            "x-rapidapi-key":
-              "848cdd11b1msh7adfec8147814dbp135c7bjsnaffe2ec3ddb2",
-          },
-        }).finally(() => {
-          setLoading(false);
-        });
-        console.log(response.data.products);
-        setProducts(response.data.products);
-        setErrorMessage("failed to load, check connection");
-      } catch (error) {
-        if (error.response) {
-          console.log("Error Response:", error.response.data);
-        } else {
-          console.log("Error", error.message);
-        }
-      }
-    };
-
-    const timer = setTimeout(fetchData, 1000);
-
-    return () => clearTimeout(timer);
-  }, []);
   return (
     <motion.div
       variants={routeVariants}
@@ -271,25 +240,6 @@ function Shop() {
         </div>
       </motion.div>
 
-      <div
-        className={`nav-menu-content ${
-          mobileMenuShow ? "show" : ""
-        } fixed inset-0 top-16 z-50 hidden`}
-      >
-        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-        <div className="nav-menu absolute top-0 left-0 bg-white w-[70%] h-full shadow-xl overflow-y-auto">
-          <div className="tabs flex items-center justify-between p-5 text-[14px] bg-neutral-100">
-            <NavLink className="" to="fashion">
-              FASHION
-            </NavLink>
-            <NavLink to="beauty">BEAUTY</NavLink>
-            <NavLink to="home">HOME</NavLink>
-          </div>
-
-          <Outlet />
-        </div>
-      </div>
-
       {/* Carousel */}
       <Slider className="mt-16" {...settings}>
         <div className="h-80">
@@ -420,8 +370,21 @@ function Shop() {
       {/* faculty closet */}
       <div className="p-2 relative mt-5">
         <p className="font-sans closet-heading before:bg-neutral-400 after:bg-neutral-400 text-center text-2xl lowercase font-normal text-oranges">
-          nike closet
+          men closet
         </p>
+
+        {loading && (
+          <div className="flex items-center justify-center relative mt-16">
+            <span className="loading loading-spinner text-primary"></span>
+            <span className="loading loading-spinner text-secondary"></span>
+            <span className="loading loading-spinner text-accent"></span>
+            <span className="loading loading-spinner text-neutral"></span>
+            <span className="loading loading-spinner text-info"></span>
+            <span className="loading loading-spinner text-success"></span>
+            <span className="loading loading-spinner text-warning"></span>
+            <span className="loading loading-spinner text-error"></span>
+          </div>
+        )}
 
         <motion.div
           initial={{
@@ -438,8 +401,6 @@ function Shop() {
           }}
           className="flex flex-wrap p-2"
         >
-          {loading && <p>Loading....</p>}
-
           {products.map((product) => {
             return (
               <div key={product.id} className="relative mt-10 w-1/2">
@@ -463,6 +424,18 @@ function Shop() {
             // console.log(product.imageUrl);
           })}
         </motion.div>
+        <div className="flex items-center justify-center relative mt-10">
+          <NavLink
+            to="shoes"
+            className="text-center flex items-center gap-2 p-2 font-bold text-white bg-oranges font-bodoni"
+          >
+            explore more
+            <FontAwesomeIcon
+              className="w-3 relative top-[1px]"
+              icon={faRightLong}
+            />
+          </NavLink>
+        </div>
       </div>
 
       {/* beyond fashion */}
@@ -556,7 +529,7 @@ function Shop() {
       {/* new arrivals */}
       <div className="relative mt-5">
         <p className="font-sans closet-heading before:bg-neutral-400 after:bg-neutral-400 text-center text-2xl lowercase font-normal text-oranges">
-          new arrivals
+          w closet
         </p>
       </div>
     </motion.div>

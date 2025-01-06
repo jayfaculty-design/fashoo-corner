@@ -50,7 +50,7 @@ function Menu() {
       >
         <Link
           onClick={() => setActiveNav(false)}
-          to="shop/fashion"
+          to="shop/shop-menu/fashion"
           className="text-3xl font-semibold text-oranges"
         >
           shop

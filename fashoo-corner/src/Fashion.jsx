@@ -5,6 +5,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import { NavLink } from "react-router";
 
 function Fashion() {
   return (
@@ -15,7 +16,7 @@ function Fashion() {
           <p className="font-extralight text-[15px]">{">"}</p>
         </div>
         <div className="border-b-neutral-200 border-b pb-3 pt-3 cursor-pointer flex justify-between">
-          <p>Fashion</p>
+          <p>explore</p>
           <p className="font-extralight text-[15px]">{">"}</p>
         </div>
       </div>
@@ -35,13 +36,16 @@ function Fashion() {
             icon={faAdd}
           />
         </div>
-        <div className="cursor-pointer flex items-center justify-between">
+        <NavLink
+          to="shoes"
+          className="cursor-pointer flex items-center justify-between"
+        >
           <p>shoes</p>
           <FontAwesomeIcon
             className="text-[12px] text-neutral-500"
             icon={faAdd}
           />
-        </div>
+        </NavLink>
         <div className="cursor-pointer flex items-center justify-between">
           <p>watches</p>
           <FontAwesomeIcon
@@ -75,7 +79,10 @@ function Fashion() {
       <div className="flex flex-col gap-5 border-b-neutral-300 border-b pb-5">
         <h1>Featured</h1>
         <div className="flex flex-col gap-4 cursor-pointer">
-          <img src="/moda.jpg" alt="" />
+          <img
+            src="https://img.freepik.com/free-photo/portrait-fashionable-boy-posing_23-2148184645.jpg?t=st=1736096751~exp=1736100351~hmac=5c861bc7dcc6e44a811b1561a425a13a40b7aba53027a409ef3b2c4a5c08e57d&w=360"
+            alt=""
+          />
           <p>faculty closet</p>
         </div>
       </div>
