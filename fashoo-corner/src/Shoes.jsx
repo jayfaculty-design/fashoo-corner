@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Outlet, Link, NavLink } from "react-router";
 import { motion } from "framer-motion";
 import { NavContext } from "./App";
@@ -8,6 +8,9 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 function Shoes() {
   const { products, setProducts, loading } = useContext(NavContext);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const routeVariants = {
     initial: {
       y: "100vh",

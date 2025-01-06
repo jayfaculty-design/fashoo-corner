@@ -19,6 +19,7 @@ import Home2 from "./Home2";
 import Slider from "react-slick";
 import axios from "axios";
 import { NavContext } from "./App";
+import Footer from "./Footer";
 
 function Shop() {
   var productSettings = {
@@ -427,7 +428,7 @@ function Shop() {
         <div className="flex items-center justify-center relative mt-10">
           <NavLink
             to="shoes"
-            className="text-center flex items-center gap-2 p-2 font-bold text-white bg-oranges font-bodoni"
+            className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg font-bodoni bg-oranges border-oranges text-white"
           >
             explore more
             <FontAwesomeIcon
@@ -447,19 +448,21 @@ function Shop() {
         <div className="some-section relative mt-10">
           <div className="section-1 relative mt-3 border p-3">
             <div className="flex items-center flex-row gap-4">
-              <div className="image w-[50%]">
-                <img
+              <div className="image font-bodoni w-[50%] bg-yellow-400 p-5 flex flex-col items-center h-64 justify-center">
+                <h1 className="text-3xl text-white">UP TO</h1>
+                <h1 className="text-4xl">40% OFF</h1>
+                {/* <img
                   src="https://img.freepik.com/free-photo/medium-shot-woman-with-pink-outfit_23-2149068995.jpg?t=st=1736090422~exp=1736094022~hmac=435f3ff5396e236d967f7c84f65b6ba6ed84c28f196c1b05390a1bbad6e394bd&w=360"
                   className="h-full"
-                />
+                /> */}
               </div>
               <div className="description gap-5 relative p-2 flex flex-col w-[50%] text-black">
                 <div className="text-3xl">
-                  <p>Erderm Pre Fall 25: Paintly Pronts</p>
+                  <p>One in a milli skin cares on sale now!</p>
                 </div>
                 <div>
                   <button className="lowercase border-b border-black w-fit">
-                    Shop pants
+                    Shop skincares
                   </button>
                 </div>
               </div>
@@ -532,6 +535,8 @@ function Shop() {
           w closet
         </p>
       </div>
+
+      <Footer />
     </motion.div>
   );
 }
