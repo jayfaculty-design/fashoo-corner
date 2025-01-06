@@ -16,6 +16,7 @@ import Beauty from "./Beauty";
 import Home2 from "./Home2";
 import Slider from "react-slick";
 import axios from "axios";
+
 function Shop() {
   var productSettings = {
     dots: true,
@@ -78,13 +79,14 @@ function Shop() {
 
   const [searchBox, setSearchBox] = useState(false);
   const [searchCloseICon, setSearchCloseIcon] = useState(false);
-
+  const [loading, setLoading] = useState(true);
+  const [errorMessage, setErrorMessage] = useState("");
   const [mobileMenuShow, setMobileMenuShow] = useState(false);
   const [menuIconShow, setMenuIconShow] = useState(false);
   const [closeIconShow, setCloseIconShow] = useState(false);
 
   const URL =
-    "https://asos2.p.rapidapi.com/products/v2/list?store=US&offset=0&categoryId=4209&country=US&sort=freshness&currency=USD&sizeSchema=US&limit=10&lang=en-US";
+    "https://asos2.p.rapidapi.com/products/v2/list?store=US&offset=0&categoryId=4209&country=US&sort=freshness&currency=USD&sizeSchema=US&limit=6&lang=en-US";
 
   const [products, setProducts] = useState([]);
   useEffect(() => {
@@ -98,9 +100,12 @@ function Shop() {
             "x-rapidapi-key":
               "848cdd11b1msh7adfec8147814dbp135c7bjsnaffe2ec3ddb2",
           },
+        }).finally(() => {
+          setLoading(false);
         });
         console.log(response.data.products);
         setProducts(response.data.products);
+        setErrorMessage("failed to load, check connection");
       } catch (error) {
         if (error.response) {
           console.log("Error Response:", error.response.data);
@@ -418,13 +423,29 @@ function Shop() {
           nike closet
         </p>
 
-        <div className="flex flex-wrap p-2">
+        <motion.div
+          initial={{
+            opacity: 0,
+          }}
+          whileInView={{
+            opacity: 1,
+            transition: {
+              duration: 3,
+            },
+          }}
+          viewport={{
+            once: true,
+          }}
+          className="flex flex-wrap p-2"
+        >
+          {loading && <p>Loading....</p>}
+
           {products.map((product) => {
             return (
               <div key={product.id} className="relative mt-10 w-1/2">
-                <div className="flex p-5 cursor-pointer flex-col items-center justify-center gap-2 w-fit">
+                <div className="flex h-96 p-5 cursor-pointer flex-col items-center justify-center gap-2 w-fit">
                   <img
-                    className="w-44"
+                    className="w-44 h-44"
                     src={`https://${product.imageUrl}`}
                     alt=""
                   />
@@ -441,13 +462,13 @@ function Shop() {
             );
             // console.log(product.imageUrl);
           })}
-        </div>
+        </motion.div>
       </div>
 
       {/* beyond fashion */}
       <div className="relative mt-5">
         <p className="font-sans closet-heading before:bg-neutral-400 after:bg-neutral-400 text-center text-2xl lowercase font-normal text-oranges">
-          beyond fashion
+          beyond
         </p>
 
         <div className="some-section relative mt-10">
