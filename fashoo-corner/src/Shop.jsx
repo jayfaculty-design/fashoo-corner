@@ -568,7 +568,10 @@ function Shop() {
                 key={product.id}
                 className="flex gap-2 flex-col mt-5 items-center hover:border-black hover:borde rounded-md"
               >
-                <div className="flex h-96 p-5 cursor-pointer flex-col items-center justify-center gap-2 w-fit">
+                <NavLink
+                  to={`product-details/${product.id}`}
+                  className="flex h-96 p-5 cursor-pointer flex-col items-center justify-center gap-2 w-fit"
+                >
                   <img className="w-44 h-44" src={`${product.image}`} alt="" />
                   <p className="text-center relative text-[14px] mt-2 uppercase text-oranges">
                     {product.category}
@@ -578,7 +581,7 @@ function Shop() {
                   <button className="border border-black p-2 ">
                     add to cart
                   </button>
-                </div>
+                </NavLink>
               </div>
             );
             // console.log(product.imageUrl);
@@ -668,7 +671,6 @@ function Shop() {
           </div>
         </motion.div>
       </div>
-      <Footer />
     </motion.div>
   );
 }

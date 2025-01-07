@@ -13,6 +13,7 @@ import LocationProvider from "./LocationProvider";
 import RoutesWithAnimation from "./RoutesWithAnimation";
 import Menu from "./Menu";
 import Shopmenu from "./Shopmenu";
+import Footer from "./Footer";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -24,6 +25,7 @@ createRoot(document.getElementById("root")).render(
           <LocationProvider>
             <RoutesWithAnimation />
           </LocationProvider>
+          <Footer />
         </App>
       </AnimatePresence>
     </BrowserRouter>

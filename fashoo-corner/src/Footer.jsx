@@ -14,7 +14,7 @@ import React from "react";
 
 function Footer() {
   return (
-    <div className="flex flex-col p-5 gap-5">
+    <div className="flex flex-col p-5 gap-5 mt-10">
       <div className="cursor-pointer">
         <div className="flex items-center justify-between">
           <h1 className="font-medium">How to Shop</h1>
