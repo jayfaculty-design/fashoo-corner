@@ -95,20 +95,25 @@ function Footer() {
         </p>
       </div>
 
-      <div className="border-t border-b-neutral-400 border-b pb-5 border-t-neutral-400 pt-5 pl-5 pr-5 flex justify-between">
-        <FontAwesomeIcon className="text-2xl" icon={faInstagram} />
-        <FontAwesomeIcon className="text-2xl" icon={faXTwitter} />
-        <FontAwesomeIcon className="text-2xl" icon={faFacebook} />
-        <FontAwesomeIcon className="text-2xl" icon={faGithub} />
+      <div className="border-t text-neutral-600 text-[20px] border-b-neutral-400 border-b pb-5 border-t-neutral-400 pt-5 pl-5 pr-5 flex justify-between">
+        <FontAwesomeIcon className="" icon={faInstagram} />
+        <FontAwesomeIcon className="" icon={faXTwitter} />
+        <FontAwesomeIcon className="" icon={faFacebook} />
+        <FontAwesomeIcon className="" icon={faGithub} />
       </div>
 
-      <div>
-        <ul>
+      <div className="flex flex-col gap-5">
+        <ul className="flex text-[14px] justify-between">
           <li>Privacy Policy</li>
           <li>Terms & Conditions</li>
           <li>Your Privacy Choices</li>
           <li>Legal</li>
         </ul>
+        <div className="flex justify-center">
+          <p className="text-[14px] text-neutral-700">
+            © 2025 Fashoo Corner, Jay Webs Inc. All Rights Reserved.
+          </p>
+        </div>
       </div>
     </div>
   );
