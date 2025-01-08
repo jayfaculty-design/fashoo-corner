@@ -32,18 +32,12 @@ export default function App({ children }) {
           },
         }).finally(() => {
           setLoading(false);
-          if (products.length === 0) {
-            setErrorMessage("failed to load, check connection");
-          }
         });
         console.log(response.data.products);
         setProducts(response.data.products);
       } catch (error) {
-        if (error.response) {
-          console.log("Error Response:", error.response.data);
-        } else {
-          console.log("Error", error.message);
-        }
+        console.log("Error");
+        setErrorMessage("Cannot retrieve products, please try again");
       }
     };
 

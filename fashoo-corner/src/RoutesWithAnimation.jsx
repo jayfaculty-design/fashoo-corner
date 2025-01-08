@@ -12,6 +12,8 @@ import Shopmenu from "./Shopmenu";
 import ProductDetails from "./ProductDetails";
 import Clothing from "./Clothing";
 import ProductDetails2 from "./ProductDetails2";
+import Error404 from "./Error404";
+import Jelweries from "./Jelweries";
 
 function RoutesWithAnimation() {
   const location = useLocation();
@@ -28,8 +30,10 @@ function RoutesWithAnimation() {
 
         <Route path="home" element={<Home2 />} />
       </Route>
+      <Route path="/*" element={<Error404 />} />
       <Route path="shop/shoes" element={<Shoes />} />
       <Route path="shop/clothing" element={<Clothing />} />
+      <Route path="shop/jelweries" element={<Jelweries />} />
       <Route path="shop/product-details/:id" element={<ProductDetails />} />
       <Route
         path="shop/clothing/products-details/:id"

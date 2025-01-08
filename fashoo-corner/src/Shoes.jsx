@@ -86,7 +86,11 @@ function Shoes() {
               key={product.id}
               className="flex gap-2 flex-col items-center hover:border-black rounded-md"
             >
-              <img src={`https://${product.imageUrl}`} alt="images" />
+              <img
+                className="w-[250px] h-[250px]"
+                src={`https://${product.imageUrl}`}
+                alt="images"
+              />
               <p className="uppercase text-oranges">{product.brandName}</p>
               <p className="text-center text-[14px]">{product.name}</p>
               <p>{product.price.current.text}</p>

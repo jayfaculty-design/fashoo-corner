@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
-import { useParams, Link } from "react-router";
+import { useParams, Link, NavLink } from "react-router";
 import { NavContext } from "./App";
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -57,7 +57,7 @@ function ProductDetails() {
       variants={routeVariants}
       initial="initial"
       animate="final"
-      className="h-full"
+      className="h-full bg-white"
     >
       <motion.div className="relative">
         <div className="top-bar z-[999] fixed top-0 w-full  p-5 lg:pr-10 lg:pl-10 bg-white shadow-md">
@@ -206,7 +206,15 @@ function ProductDetails() {
 
       {/* Start */}
 
-      <div className="bg-white p-5 mt-16">
+      <div className="relative mt-16 gap-1 flex p-5">
+        <NavLink className="underline lowercase underline-offset-4" to="/shop">
+          Shop
+        </NavLink>
+        <p className="text-gray-500">/</p>
+        <p className="lowercase">{product.title}</p>
+      </div>
+
+      <div className="bg-white p-5">
         {loading && (
           <div className="flex items-center justify-center relative mt-16">
             <span className="loading loading-spinner text-primary"></span>
@@ -223,7 +231,7 @@ function ProductDetails() {
           <img
             className="w-[200px] self-center"
             src={product.image}
-            alt="product-image"
+            alt={product.title}
           />
           <p className="text-neutral-500 border border-neutral-300 w-fit p-2">
             {product.category}

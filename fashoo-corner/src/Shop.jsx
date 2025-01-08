@@ -87,7 +87,7 @@ function Shop() {
   const [menuIconShow, setMenuIconShow] = useState(false);
   const [closeIconShow, setCloseIconShow] = useState(false);
 
-  const { setMobileMenuShow, products, loading, menClothing } =
+  const { setMobileMenuShow, products, loading, menClothing, errorMessage } =
     useContext(NavContext);
 
   return (
@@ -271,15 +271,21 @@ function Shop() {
         <div className="new-panel-top flex flex-col gap-10">
           <div className="text-center flex gap-3 flex-col ">
             <p className="headd text-3xl uppercase">WHAT'S NEW</p>
-            <button className="lowercase border-b border-black w-fit self-center">
+            <NavLink
+              to="clothing"
+              className="lowercase border-b border-black w-fit self-center"
+            >
               Shop now
-            </button>
+            </NavLink>
           </div>
           <div className="text-center flex gap-3 flex-col">
             <p className="headd text-3xl uppercase">WHAT'S NEXT</p>
-            <button className="lowercase border-b border-black w-fit self-center">
+            <NavLink
+              to="shoes"
+              className="lowercase border-b border-black w-fit self-center"
+            >
               Shop shoes
-            </button>
+            </NavLink>
           </div>
         </div>
 
@@ -299,12 +305,15 @@ function Shop() {
             </div>
             <div className="description gap-5 relative p-2 flex flex-col w-[50%] text-black">
               <div className="text-3xl">
-                <p>Erderm Pre Fall 25: Paintly Pronts</p>
+                <p>New Pre Fall 25: Paintly Pronts</p>
               </div>
               <div>
-                <button className="lowercase border-b border-black w-fit">
+                <NavLink
+                  to="clothing"
+                  className="lowercase border-b border-black w-fit"
+                >
                   Shop pants
-                </button>
+                </NavLink>
               </div>
             </div>
           </div>
@@ -319,12 +328,15 @@ function Shop() {
             </div>
             <div className="description gap-5 relative p-2 flex flex-col w-[50%] text-black">
               <div className="text-3xl">
-                <p>Erderm Pre Fall 25: Paintly Pronts</p>
+                <p>Dope Quality Sundown: Too Dope</p>
               </div>
               <div>
-                <button className="lowercase border-b border-black w-fit">
+                <NavLink
+                  to="clothing"
+                  className="lowercase border-b border-black w-fit"
+                >
                   Shop now
-                </button>
+                </NavLink>
               </div>
             </div>
           </div>
@@ -360,9 +372,12 @@ function Shop() {
                 <p>Trending Now: Citrus Hues, Spectacles & More</p>
               </div>
               <div>
-                <button className="lowercase border-b border-black w-fit">
+                <NavLink
+                  to="clothing"
+                  className="lowercase border-b border-black w-fit"
+                >
                   Shop pants
-                </button>
+                </NavLink>
               </div>
             </div>
           </div>
@@ -387,6 +402,11 @@ function Shop() {
             <span className="loading loading-spinner text-error"></span>
           </div>
         )}
+        {/* {errorMessage && (
+          <div className="flex flex-col justify-center text-neutral-600 mt-10">
+            <p className="text-center">{errorMessage}</p>
+          </div>
+        )} */}
 
         <motion.div
           initial={{
@@ -535,6 +555,11 @@ function Shop() {
         <p className="font-bodoni closet-heading text-center uppercase underline underline-offset-4 font-normal text-black">
           w closet
         </p>
+        {/* {errorMessage && (
+          <div className="flex flex-col justify-center text-neutral-600 mt-16">
+            <p className="text-center">{errorMessage}</p>
+          </div>
+        )} */}
         {loading && (
           <div className="flex items-center justify-center relative mt-16">
             <span className="loading loading-spinner text-primary"></span>
@@ -613,9 +638,12 @@ function Shop() {
                 <p>Godfred's Closet</p>
               </div>
               <div>
-                <button className="lowercase border-b border-black w-fit">
+                <NavLink
+                  to="clothing"
+                  className="lowercase border-b border-black w-fit"
+                >
                   shop now
-                </button>
+                </NavLink>
               </div>
             </div>
           </div>
@@ -633,9 +661,12 @@ function Shop() {
                 <p>BestSellers</p>
               </div>
               <div>
-                <button className="lowercase border-b border-black w-fit">
+                <NavLink
+                  to="clothing"
+                  className="lowercase border-b border-black w-fit"
+                >
                   Shop now
-                </button>
+                </NavLink>
               </div>
             </div>
           </div>
@@ -671,9 +702,12 @@ function Shop() {
                 <p>Jewelries</p>
               </div>
               <div>
-                <button className="lowercase border-b border-black w-fit">
+                <NavLink
+                  to="jelweries"
+                  className="lowercase border-b border-black w-fit"
+                >
                   Shop now
-                </button>
+                </NavLink>
               </div>
             </div>
           </div>

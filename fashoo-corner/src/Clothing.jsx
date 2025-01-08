@@ -66,7 +66,11 @@ function Clothing() {
                 key={products.id}
                 to={`products-details/${products.id}`}
               >
-                <img src={products.image_url} alt="image" />
+                <img
+                  src={products.image_url}
+                  className="w-[250px] h-[250px]"
+                  alt="image"
+                />
                 <p className="text-center relative text-[14px] mt-2 uppercase text-oranges">
                   {products.category}
                 </p>

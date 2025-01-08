@@ -85,6 +85,7 @@ function ProductDetails2() {
 
           <ul className="text-[14px]">
             <li>Category: {product.category}</li>
+            <li>Color: {product.color}</li>
             <li>Size(s): {product.sizes}</li>
             <li>Product Code: {product.sku}</li>
           </ul>
