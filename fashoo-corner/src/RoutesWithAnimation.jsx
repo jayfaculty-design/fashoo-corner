@@ -10,6 +10,8 @@ import Home2 from "./Home2";
 import Shoes from "./Shoes";
 import Shopmenu from "./Shopmenu";
 import ProductDetails from "./ProductDetails";
+import Clothing from "./Clothing";
+import ProductDetails2 from "./ProductDetails2";
 
 function RoutesWithAnimation() {
   const location = useLocation();
@@ -27,7 +29,12 @@ function RoutesWithAnimation() {
         <Route path="home" element={<Home2 />} />
       </Route>
       <Route path="shop/shoes" element={<Shoes />} />
+      <Route path="shop/clothing" element={<Clothing />} />
       <Route path="shop/product-details/:id" element={<ProductDetails />} />
+      <Route
+        path="shop/clothing/products-details/:id"
+        element={<ProductDetails2 />}
+      />
       <Route path="contact" element={<Contact />} />
     </Routes>
   );

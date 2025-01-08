@@ -587,6 +587,14 @@ function Shop() {
             // console.log(product.imageUrl);
           })}
         </motion.div>
+        <div className="flex justify-center pb-5">
+          <NavLink
+            to="clothing"
+            className="border border-oranges bg-oranges text-white p-1 lowercase"
+          >
+            Explore more
+          </NavLink>
+        </div>
       </div>
       <div className="flex items-center justify-center">
         <h1 className="font-bodoni text-center relative mt-5">EDITOR'S PICK</h1>
