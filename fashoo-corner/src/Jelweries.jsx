@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import ShopNavTop from "./ShopNavTop";
 import axios from "axios";
 import { NavLink } from "react-router";
+import { CartContext } from "./CartProvider";
 function Jelweries() {
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
+  const { addToCart } = useContext(CartContext);
 
   useEffect(() => {
     setLoading(true);
@@ -118,7 +120,10 @@ function Jelweries() {
                     <p className="text-center text-[14px]">{product.name}</p>
                     <p className="text-center">${product.price}</p>
                   </NavLink>
-                  <button className="border border-black p-2 ">
+                  <button
+                    onClick={() => addToCart(products)}
+                    className="border border-black p-2 "
+                  >
                     Add to cart
                   </button>
                 </div>
