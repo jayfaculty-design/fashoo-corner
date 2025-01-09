@@ -3,7 +3,7 @@ import { NavContext } from "./App";
 import { motion } from "framer-motion";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 
 function ShopNavTop() {
   const {
@@ -135,20 +135,25 @@ function ShopNavTop() {
                 placeholder="Search"
                 className="border-none outline-none hidden lg:flex placeholder:text-[14px] text-[14px] text-black"
               />
-              <img
-                width="24"
-                height="24"
-                src="https://img.icons8.com/ios/100/like--v1.png"
-                alt="like--v1"
-                className="cursor-pointer"
-              />
-              <img
-                width="24"
-                height="24"
-                src="https://img.icons8.com/hieroglyphs/32/shopping-cart.png"
-                alt="shopping-cart"
-                className="cursor-pointer"
-              />
+              <NavLink to="/shop/favorites">
+                <img
+                  width="24"
+                  height="24"
+                  src="https://img.icons8.com/ios/100/like--v1.png"
+                  alt="like--v1"
+                  className="cursor-pointer"
+                />
+              </NavLink>
+
+              <NavLink to="/shop/cart">
+                <img
+                  width="24"
+                  height="24"
+                  src="https://img.icons8.com/hieroglyphs/32/shopping-cart.png"
+                  alt="shopping-cart"
+                  className="cursor-pointer"
+                />
+              </NavLink>
             </div>
           </div>
 

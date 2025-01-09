@@ -12,20 +12,41 @@ function ProductDetails() {
   const [product, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    setLoading(true);
+  const [errorMessage, setErrorMessage] = useState("");
+  const fetchData = () => {
+    setErrorMessage("");
     axios({
       method: "get",
       url: `https://fakestoreapi.com/products/${id}`,
     })
       .then((response) => {
         setProducts(response.data);
+        setErrorMessage("");
+        setLoading(false);
       })
       .finally(() => setLoading(false));
-  }, []);
-
+  };
+  //   const fetchJewerelyData = () => {
+  //     axios({
+  //       method: "get",
+  //       url: "https://fakestoreapi.com/products/category/jewelery",
+  //     })
+  //       .then((response) => {
+  //         setProducts(response.data);
+  //         setErrorMessage("");
+  //         setLoading(false);
+  //       })
+  //       .catch((error) => {
+  //         setErrorMessage("Cannot retrieve product details, try again");
+  //       })
+  //       .finally(() => setLoading(false));
+  //   };
   useEffect(() => {
+    setLoading(true);
+    setErrorMessage("");
     window.scrollTo(0, 0);
+    fetchData();
+    // fetchJewerelyData();
   }, []);
 
   const routeVariants = {
@@ -225,6 +246,11 @@ function ProductDetails() {
             <span className="loading loading-spinner text-success"></span>
             <span className="loading loading-spinner text-warning"></span>
             <span className="loading loading-spinner text-error"></span>
+          </div>
+        )}
+        {errorMessage && (
+          <div className="flex flex-col justify-center text-neutral-600">
+            <p className="text-center">{errorMessage}</p>
           </div>
         )}
         <div key={product.id} className="flex flex-col gap-3">

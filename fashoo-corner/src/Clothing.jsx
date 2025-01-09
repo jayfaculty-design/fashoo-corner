@@ -43,6 +43,11 @@ function Clothing() {
           <p className="text-gray-500">/</p>
           <p className="lowercase">clothing</p>
         </div>
+        <div className="p-5 flex">
+          <h1 className="text-3xl font-light font-sans">
+            Home Designer Clothes
+          </h1>
+        </div>
 
         <motion.div
           initial={{
@@ -61,25 +66,26 @@ function Clothing() {
         >
           {clothing.map((products) => {
             return (
-              <NavLink
-                className="flex h-96 p-5 cursor-pointer flex-col items-center justify-center gap-2 w-fit"
-                key={products.id}
-                to={`products-details/${products.id}`}
-              >
-                <img
-                  src={products.image_url}
-                  className="w-[250px] h-[250px]"
-                  alt="image"
-                />
-                <p className="text-center relative text-[14px] mt-2 uppercase text-oranges">
-                  {products.category}
-                </p>
-                <p className="text-center text-[14px]">{products.name}</p>
-                <p className="text-center">${products.price}</p>
+              <div className="flex h-96 p-5 cursor-pointer flex-col items-center justify-center gap-2 w-fit">
+                <NavLink
+                  key={products.id}
+                  to={`products-details/${products.id}`}
+                >
+                  <img
+                    src={products.image_url}
+                    className="w-[250px] h-[250px]"
+                    alt="image"
+                  />
+                  <p className="text-center relative text-[14px] mt-2 uppercase text-oranges">
+                    {products.category}
+                  </p>
+                  <p className="text-center text-[14px]">{products.name}</p>
+                  <p className="text-center">${products.price}</p>
+                </NavLink>
                 <button className="border border-black p-2 ">
                   Add to cart
                 </button>
-              </NavLink>
+              </div>
             );
           })}
         </motion.div>

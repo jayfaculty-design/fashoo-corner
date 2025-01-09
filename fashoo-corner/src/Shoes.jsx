@@ -8,7 +8,7 @@ import axios from "axios";
 import ShopNavTop from "./ShopNavTop";
 
 function Shoes() {
-  const { loading } = useContext(NavContext);
+  const { loading, errorMessage, setErrorMessage } = useContext(NavContext);
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -26,6 +26,7 @@ function Shoes() {
       .catch((error) => {
         if (error.response) {
           console.log("Error Response:", error.response.data);
+          setErrorMessage("Cannot retrieve products, try again later");
         } else {
           console.log("Error", error.message);
         }
@@ -78,27 +79,33 @@ function Shoes() {
           <span className="loading loading-spinner text-error"></span>
         </div>
       )}
-
-      <div className="grid grid-cols-3 grid-rows-2 gap-x-4 gap-y-7 p-4">
-        {products.map((product) => {
-          return (
-            <div
-              key={product.id}
-              className="flex gap-2 flex-col items-center hover:border-black rounded-md"
-            >
-              <img
-                className="w-[250px] h-[250px]"
-                src={`https://${product.imageUrl}`}
-                alt="images"
-              />
-              <p className="uppercase text-oranges">{product.brandName}</p>
-              <p className="text-center text-[14px]">{product.name}</p>
-              <p>{product.price.current.text}</p>
-              <button className="border border-black p-2">Add to cart</button>
-            </div>
-          );
-        })}
-      </div>
+      {errorMessage && (
+        <div className="flex flex-col justify-center text-neutral-600 mt-16">
+          <p className="text-center">{errorMessage}</p>
+        </div>
+      )}
+      {!loading && !errorMessage && (
+        <div className="grid grid-cols-3 grid-rows-2 gap-x-4 gap-y-7 p-4">
+          {products.map((product) => {
+            return (
+              <div
+                key={product.id}
+                className="flex gap-2 flex-col items-center hover:border-black rounded-md"
+              >
+                <img
+                  className="w-[250px] h-[250px]"
+                  src={`https://${product.imageUrl}`}
+                  alt="images"
+                />
+                <p className="uppercase text-oranges">{product.brandName}</p>
+                <p className="text-center text-[14px]">{product.name}</p>
+                <p>{product.price.current.text}</p>
+                <button className="border border-black p-2">Add to cart</button>
+              </div>
+            );
+          })}
+        </div>
+      )}
     </motion.div>
   );
 }

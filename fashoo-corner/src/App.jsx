@@ -45,8 +45,8 @@ export default function App({ children }) {
 
     return () => clearTimeout(timer);
   }, []);
-
-  useEffect(() => {
+  function fetchProducts() {
+    setErrorMessage("");
     axios({
       method: "get",
       url: "https://fakestoreapi.com/products/category/men's%20clothing?limit=4",
@@ -54,10 +54,20 @@ export default function App({ children }) {
       .then((response) => {
         console.log(response.data);
         setMenClothing(response.data);
+        setErrorMessage("");
       })
       .finally(() => {
         setLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        setErrorMessage("Cannot retrieve data, please try again");
       });
+  }
+
+  useEffect(() => {
+    setErrorMessage("");
+    fetchProducts();
   }, []);
 
   return (
@@ -80,6 +90,7 @@ export default function App({ children }) {
         errorMessage,
         loading,
         menClothing,
+        fetchProducts,
       }}
     >
       {children}

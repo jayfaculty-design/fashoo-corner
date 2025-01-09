@@ -11,6 +11,7 @@ function Jelweries() {
   useEffect(() => {
     setLoading(true);
     window.scrollTo(0, 0);
+    setErrorMessage("");
 
     axios({
       method: "get",
@@ -19,6 +20,7 @@ function Jelweries() {
       .then((response) => {
         console.log(response.data);
         setProducts(response.data);
+        setErrorMessage("");
       })
       .finally(() => setLoading(false))
       .catch((error) => {
@@ -54,6 +56,9 @@ function Jelweries() {
         <p className="text-gray-500">/</p>
         <p className="lowercase">Jelweries</p>
       </div>
+      <div className="p-5 flex">
+        <h1 className="text-3xl font-light font-sans">Cool Jelweries</h1>
+      </div>
 
       <div>
         {loading && (
@@ -75,43 +80,48 @@ function Jelweries() {
         )}
       </div>
 
-      <motion.div
-        initial={{
-          opacity: 0,
-        }}
-        whileInView={{
-          opacity: 1,
-          transition: {
-            duration: 3,
-          },
-        }}
-        viewport={{
-          once: true,
-        }}
-        className="grid grid-cols-2 grid-rows-2 gap-x-4 gap-y-7 p-4"
-      >
-        {products.map((product) => {
-          return (
-            <NavLink
-              className="flex h-96 p-5 cursor-pointer flex-col items-center justify-center gap-2 w-fit"
-              key={product.id}
-              to={`products-details/${product.id}`}
-            >
-              <img
-                src={product.image}
-                className="w-[150px] h-[150px]"
-                alt="image"
-              />
-              <p className="text-center relative text-[14px] mt-2 uppercase text-oranges">
-                {product.category}
-              </p>
-              <p className="text-center text-[14px]">{product.name}</p>
-              <p className="text-center">${product.price}</p>
-              <button className="border border-black p-2 ">Add to cart</button>
-            </NavLink>
-          );
-        })}
-      </motion.div>
+      {!loading && !errorMessage && (
+        <motion.div
+          initial={{
+            opacity: 0,
+          }}
+          whileInView={{
+            opacity: 1,
+            transition: {
+              duration: 3,
+            },
+          }}
+          viewport={{
+            once: true,
+          }}
+          className="grid grid-cols-2 grid-rows-2 gap-x-4 gap-y-7 p-4"
+        >
+          {products.map((product) => {
+            return (
+              <div className="flex h-96 p-5 cursor-pointer flex-col items-center justify-center gap-2 w-fit">
+                <NavLink
+                  key={product.id}
+                  to={`/shop/product-details/${product.id}`}
+                >
+                  <img
+                    src={product.image}
+                    className="w-[150px] h-[150px]"
+                    alt="image"
+                  />
+                  <p className="text-center relative text-[14px] mt-2 uppercase text-oranges">
+                    {product.category}
+                  </p>
+                  <p className="text-center text-[14px]">{product.name}</p>
+                  <p className="text-center">${product.price}</p>
+                </NavLink>
+                <button className="border border-black p-2 ">
+                  Add to cart
+                </button>
+              </div>
+            );
+          })}
+        </motion.div>
+      )}
     </motion.div>
   );
 }

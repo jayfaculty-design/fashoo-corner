@@ -87,8 +87,14 @@ function Shop() {
   const [menuIconShow, setMenuIconShow] = useState(false);
   const [closeIconShow, setCloseIconShow] = useState(false);
 
-  const { setMobileMenuShow, products, loading, menClothing, errorMessage } =
-    useContext(NavContext);
+  const {
+    setMobileMenuShow,
+    products,
+    loading,
+    menClothing,
+    errorMessage,
+    fetchProducts,
+  } = useContext(NavContext);
 
   return (
     <motion.div
@@ -402,50 +408,54 @@ function Shop() {
             <span className="loading loading-spinner text-error"></span>
           </div>
         )}
-        {/* {errorMessage && (
+        {errorMessage && (
           <div className="flex flex-col justify-center text-neutral-600 mt-10">
             <p className="text-center">{errorMessage}</p>
           </div>
-        )} */}
+        )}
 
-        <motion.div
-          initial={{
-            opacity: 0,
-          }}
-          whileInView={{
-            opacity: 1,
-            transition: {
-              duration: 3,
-            },
-          }}
-          viewport={{
-            once: true,
-          }}
-          className="flex flex-wrap p-2"
-        >
-          {products.map((product) => {
-            return (
-              <div key={product.id} className="relative mt-10 w-1/2">
-                <div className="flex h-96 p-5 cursor-pointer flex-col items-center justify-center gap-2 w-fit">
-                  <img
-                    className="w-44 h-44"
-                    src={`https://${product.imageUrl}`}
-                    alt=""
-                  />
-                  <p className="text-center relative text-[14px] mt-2 uppercase text-oranges">
-                    {product.brandName}
-                  </p>
-                  <p className="text-center text-[14px]">{product.name}</p>
-                  <p className="text-center">${product.price.current.value}</p>
-                  <button className="border border-black p-2">
-                    add to cart
-                  </button>
+        {!loading && !errorMessage && (
+          <motion.div
+            initial={{
+              opacity: 0,
+            }}
+            whileInView={{
+              opacity: 1,
+              transition: {
+                duration: 3,
+              },
+            }}
+            viewport={{
+              once: true,
+            }}
+            className="flex flex-wrap p-2"
+          >
+            {products.map((product) => {
+              return (
+                <div key={product.id} className="relative mt-10 w-1/2">
+                  <div className="flex h-96 p-5 cursor-pointer flex-col items-center justify-center gap-2 w-fit">
+                    <img
+                      className="w-44 h-44"
+                      src={`https://${product.imageUrl}`}
+                      alt=""
+                    />
+                    <p className="text-center relative text-[14px] mt-2 uppercase text-oranges">
+                      {product.brandName}
+                    </p>
+                    <p className="text-center text-[14px]">{product.name}</p>
+                    <p className="text-center">
+                      ${product.price.current.value}
+                    </p>
+                    <button className="border border-black p-2">
+                      add to cart
+                    </button>
+                  </div>
                 </div>
-              </div>
-            );
-            // console.log(product.imageUrl);
-          })}
-        </motion.div>
+              );
+              // console.log(product.imageUrl);
+            })}
+          </motion.div>
+        )}
         <div className="flex items-center justify-center relative mt-10">
           <NavLink
             to="shoes"
@@ -555,11 +565,11 @@ function Shop() {
         <p className="font-bodoni closet-heading text-center uppercase underline underline-offset-4 font-normal text-black">
           w closet
         </p>
-        {/* {errorMessage && (
+        {errorMessage && (
           <div className="flex flex-col justify-center text-neutral-600 mt-16">
             <p className="text-center">{errorMessage}</p>
           </div>
-        )} */}
+        )}
         {loading && (
           <div className="flex items-center justify-center relative mt-16">
             <span className="loading loading-spinner text-primary"></span>
@@ -603,15 +613,16 @@ function Shop() {
                   </p>
                   <p className="text-center text-[14px]">{product.title}</p>
                   <p className="text-center">${product.price}</p>
-                  <button className="border border-black p-2 ">
-                    add to cart
-                  </button>
                 </NavLink>
+                <button className="border border-black p-2 ">
+                  add to cart
+                </button>
               </div>
             );
             // console.log(product.imageUrl);
           })}
         </motion.div>
+        )
         <div className="flex justify-center pb-5">
           <NavLink
             to="clothing"
