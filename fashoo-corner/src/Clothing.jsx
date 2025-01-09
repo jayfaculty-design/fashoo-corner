@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { CartContext } from "./CartProvider";
 function Clothing() {
   const [loading, setLoading] = useState(true);
-  const { addToCart } = useContext(CartContext);
+  const { cartItems, addToCart } = useContext(CartContext);
 
   useEffect(() => {
     setLoading(true);
@@ -85,12 +85,7 @@ function Clothing() {
                   <p className="text-center">${products.price}</p>
                 </NavLink>
                 <button
-                  onClick={() =>
-                    addToCart({
-                      id: products.id,
-                      name: products.name,
-                    })
-                  }
+                  onClick={() => addToCart(products)}
                   className="border border-black font-medium bg-black text-white p-2 "
                 >
                   Add to cart
