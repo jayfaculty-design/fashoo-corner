@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ShopNavTop from "./ShopNavTop";
 import { NavLink } from "react-router";
 import axios from "axios";
 import { clothing } from "./products/products";
 import { motion } from "framer-motion";
+import { CartContext } from "./CartProvider";
 function Clothing() {
   const [loading, setLoading] = useState(true);
+  const { addToCart } = useContext(CartContext);
 
   useEffect(() => {
     setLoading(true);
@@ -82,7 +84,15 @@ function Clothing() {
                   <p className="text-center text-[14px]">{products.name}</p>
                   <p className="text-center">${products.price}</p>
                 </NavLink>
-                <button className="border border-black p-2 ">
+                <button
+                  onClick={() =>
+                    addToCart({
+                      id: products.id,
+                      name: products.name,
+                    })
+                  }
+                  className="border border-black font-medium bg-black text-white p-2 "
+                >
                   Add to cart
                 </button>
               </div>

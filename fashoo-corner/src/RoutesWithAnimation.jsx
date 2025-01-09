@@ -16,6 +16,8 @@ import Error404 from "./Error404";
 import Jelweries from "./Jelweries";
 import Cart from "./Cart";
 import Favorites from "./Favorites";
+import BeyondFashion from "./BeyondFashion";
+import ProductDetails3 from "./ProductDetails3";
 
 function RoutesWithAnimation() {
   const location = useLocation();
@@ -38,7 +40,12 @@ function RoutesWithAnimation() {
       <Route path="shop/jelweries" element={<Jelweries />} />
       <Route path="shop/cart" element={<Cart />} />
       <Route path="shop/favorites" element={<Favorites />} />
+      <Route path="shop/beyond-fashion" element={<BeyondFashion />} />
       <Route path="shop/product-details/:id" element={<ProductDetails />} />
+      <Route
+        path="shop/beyond-fashion/products-details/:id"
+        element={<ProductDetails3 />}
+      />
       <Route
         path="shop/clothing/products-details/:id"
         element={<ProductDetails2 />}

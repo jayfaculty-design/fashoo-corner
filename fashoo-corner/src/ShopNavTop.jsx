@@ -117,9 +117,11 @@ function ShopNavTop() {
               />
             </div>
             <div className="flex items-center justify-between">
-              <p className="font-semibold text-xl text-oranges relative">
-                fashoo corner
-              </p>
+              <NavLink to="/shop">
+                <p className="font-semibold text-xl text-oranges relative">
+                  fashoo corner
+                </p>
+              </NavLink>
             </div>
 
             <div className="gap-5 flex items-center">

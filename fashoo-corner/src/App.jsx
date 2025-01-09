@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
-import Home from "./Home";
 import axios from "axios";
+import CartProvider from "./CartProvider";
 
 export const NavContext = createContext();
 
@@ -19,33 +19,32 @@ export default function App({ children }) {
   const URL =
     "https://asos2.p.rapidapi.com/products/v2/list?store=US&offset=0&categoryId=4209&country=US&sort=freshness&currency=USD&sizeSchema=US&limit=6&lang=en-US";
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios({
-          method: "get",
-          url: URL,
-          headers: {
-            "x-rapidapi-host": "asos2.p.rapidapi.com",
-            "x-rapidapi-key":
-              "848cdd11b1msh7adfec8147814dbp135c7bjsnaffe2ec3ddb2",
-          },
-        }).finally(() => {
-          setLoading(false);
-        });
+  const fetchData = () => {
+    setErrorMessage("");
+    setLoading(true);
+    axios({
+      method: "get",
+      url: URL,
+      headers: {
+        "x-rapidapi-host": "asos2.p.rapidapi.com",
+        "x-rapidapi-key": "848cdd11b1msh7adfec8147814dbp135c7bjsnaffe2ec3ddb2",
+      },
+    })
+      .then((response) => {
         console.log(response.data.products);
         setProducts(response.data.products);
-      } catch (error) {
-        console.log("Error");
+        setErrorMessage("");
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
         setErrorMessage("Cannot retrieve products, please try again");
-      }
-    };
+        setLoading(false);
+      });
+  };
 
-    const timer = setTimeout(fetchData, 1000);
-
-    return () => clearTimeout(timer);
-  }, []);
   function fetchProducts() {
+    setLoading(true);
     setErrorMessage("");
     axios({
       method: "get",
@@ -55,6 +54,7 @@ export default function App({ children }) {
         console.log(response.data);
         setMenClothing(response.data);
         setErrorMessage("");
+        setLoading(false);
       })
       .finally(() => {
         setLoading(false);
@@ -66,8 +66,8 @@ export default function App({ children }) {
   }
 
   useEffect(() => {
-    setErrorMessage("");
     fetchProducts();
+    fetchData();
   }, []);
 
   return (
@@ -91,9 +91,10 @@ export default function App({ children }) {
         loading,
         menClothing,
         fetchProducts,
+        fetchData,
       }}
     >
-      {children}
+      <CartProvider>{children}</CartProvider>
     </NavContext.Provider>
   );
 }

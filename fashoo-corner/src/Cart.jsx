@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { motion } from "framer-motion";
 import ShopNavTop from "./ShopNavTop";
+import { CartContext } from "./CartProvider";
+
+// const { cartItems, setCartItems } = useContext(CartContext);
 
 function Cart() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const routeVariants = {
     initial: {
       y: "100vh",

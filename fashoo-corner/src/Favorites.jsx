@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import ShopNavTop from "./ShopNavTop";
 
 function Favorites() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const routeVariants = {
     initial: {
       y: "100vh",
