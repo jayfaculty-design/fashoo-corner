@@ -4,6 +4,7 @@ import ShopNavTop from "./ShopNavTop";
 import { CartContext } from "./CartProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTruck } from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
 
 // const { cartItems, setCartItems } = useContext(CartContext);
 

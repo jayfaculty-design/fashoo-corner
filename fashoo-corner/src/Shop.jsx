@@ -21,6 +21,7 @@ import axios from "axios";
 import { NavContext } from "./App";
 import Footer from "./Footer";
 import ShopNavTop from "./ShopNavTop";
+import { CartContext } from "./CartProvider";
 
 function Shop() {
   var productSettings = {
@@ -55,6 +56,8 @@ function Shop() {
       },
     },
   };
+
+  const { addToCart } = useContext(CartContext);
 
   const {
     products,
@@ -241,7 +244,7 @@ function Shop() {
               </button>
             </div>
           )}
-          
+
           <motion.div
             initial={{
               opacity: 0,
@@ -447,7 +450,10 @@ function Shop() {
                     <p className="text-center text-[14px]">{product.title}</p>
                     <p className="text-center">${product.price}</p>
                   </NavLink>
-                  <button className="border border-black p-2 ">
+                  <button
+                    onClick={() => addToCart(product)}
+                    className="border border-black p-2 "
+                  >
                     add to cart
                   </button>
                 </div>
@@ -455,7 +461,7 @@ function Shop() {
               // console.log(product.imageUrl);
             })}
           </motion.div>
-          
+
           <div className="flex justify-center pb-5">
             <NavLink
               to="clothing"

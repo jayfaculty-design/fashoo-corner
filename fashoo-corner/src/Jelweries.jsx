@@ -121,7 +121,7 @@ function Jelweries() {
                     <p className="text-center">${product.price}</p>
                   </NavLink>
                   <button
-                    onClick={() => addToCart(products)}
+                    onClick={() => addToCart(product)}
                     className="border border-black p-2 "
                   >
                     Add to cart
