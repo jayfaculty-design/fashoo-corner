@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import ShopNavTop from "./ShopNavTop";
 import { NavLink, useParams } from "react-router";
 import { clothing } from "./products/products";
+import { CartContext } from "./CartProvider";
 
 function ProductDetails2() {
+  const { addToFavorites } = useContext(CartContext);
   const { id } = useParams();
   const product = clothing.find((pr) => pr.id === parseInt(id));
 
@@ -57,7 +59,10 @@ function ProductDetails2() {
           <button className="uppercase border p-2 bg-black text-white relative mt-5">
             Add to cart
           </button>
-          <button className="uppercase border border-black p-2 bg-neutral-100 flex items-center justify-center gap-3">
+          <button
+            onClick={() => addToFavorites(product)}
+            className="uppercase border border-black p-2 bg-neutral-100 flex items-center justify-center gap-3"
+          >
             <img
               width="16"
               height="16"

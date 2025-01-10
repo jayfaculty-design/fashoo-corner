@@ -9,7 +9,22 @@ const CartProvider = ({ children }) => {
       ? JSON.parse(localStorage.getItem("cartItems"))
       : []
   );
+  const [favoriteItems, setFavoriteItems] = useState(
+    localStorage.getItem("favoriteItems")
+      ? JSON.parse(localStorage.getItem("favoriteItems"))
+      : []
+  );
 
+  function addToFavorites(item) {
+    const isItemInFavorite = favoriteItems.find(
+      (favoriteItem) => favoriteItem.id === item.id
+    );
+    if (isItemInFavorite) {
+      return;
+    } else {
+      setFavoriteItems([...favoriteItems, { ...item }]);
+    }
+  }
   function addToCart(item) {
     const isItemInCart = cartItems.find((cartItem) => cartItem.id === item.id);
     if (isItemInCart) {
@@ -24,6 +39,7 @@ const CartProvider = ({ children }) => {
       setCartItems([...cartItems, { ...item, quantity: 1 }]);
     }
   }
+
   function removeFromCart(item) {
     const isItemInCart = cartItems.find((cartItem) => cartItem.id === item.id);
 
@@ -48,14 +64,26 @@ const CartProvider = ({ children }) => {
   function clearCart() {
     setCartItems([]);
   }
+  function clearFavorites() {
+    setFavoriteItems([]);
+  }
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }, [cartItems]);
+  useEffect(() => {
+    localStorage.setItem("favoriteItems", JSON.stringify(favoriteItems));
+  }, [favoriteItems]);
 
   useEffect(() => {
     const cartItems = localStorage.getItem("cartItems");
     if (cartItems) {
       setCartItems(JSON.parse(cartItems));
+    }
+  }, []);
+  useEffect(() => {
+    const favoriteItems = localStorage.getItem("favoriteItems");
+    if (favoriteItems) {
+      setFavoriteItems(JSON.parse(favoriteItems));
     }
   }, []);
 
@@ -68,6 +96,9 @@ const CartProvider = ({ children }) => {
         removeFromCart,
         clearCart,
         getTotal,
+        addToFavorites,
+        favoriteItems,
+        clearFavorites,
       }}
     >
       {children}
