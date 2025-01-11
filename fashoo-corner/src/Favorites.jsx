@@ -34,7 +34,7 @@ function Favorites() {
         className="h-full bg-white"
       >
         <div className="p-5 flex mt-16 items-center justify-between">
-          <h1 className="text-2xl font-forum font-normal">Saved Items</h1>
+          <h1 className="text-3xl font-forum font-normal">Saved Items</h1>
           <p
             onClick={() => clearFavorites()}
             className="text-neutral-700 cursor-pointer underline underline-offset-2"
@@ -74,7 +74,7 @@ function Favorites() {
                     <FontAwesomeIcon
                       onClick={() => removeFromFavorites(item)}
                       icon={faTrash}
-                      className="text-green-500 cursor-pointer"
+                      className="text-oranges cursor-pointer"
                     />
                   </div>
 

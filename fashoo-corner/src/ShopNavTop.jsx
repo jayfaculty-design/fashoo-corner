@@ -1,9 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { NavContext } from "./App";
 import { motion } from "framer-motion";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link, NavLink } from "react-router";
+import { CartContext } from "./CartProvider";
 
 function ShopNavTop() {
   const {
@@ -18,6 +19,11 @@ function ShopNavTop() {
     setMobileMenuShow,
   } = useContext(NavContext);
 
+  const { count, setCount, cartItems } = useContext(CartContext);
+
+  useEffect(() => {
+    setCount(cartItems.length);
+  }, [cartItems]);
   const routeVariants = {
     initial: {
       y: "100vh",
@@ -147,7 +153,7 @@ function ShopNavTop() {
                 />
               </NavLink>
 
-              <NavLink to="/shop/cart">
+              <NavLink to="/shop/cart" className="flex items-center">
                 <img
                   width="24"
                   height="24"
@@ -155,6 +161,9 @@ function ShopNavTop() {
                   alt="shopping-cart"
                   className="cursor-pointer"
                 />
+                <div className="count bg-oranges font-forum text-white p-1 h-5 w-5 rounded-full flex items-center justify-center">
+                  <p>{count}</p>
+                </div>
               </NavLink>
             </div>
           </div>

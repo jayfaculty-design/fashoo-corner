@@ -14,6 +14,7 @@ const CartProvider = ({ children }) => {
       ? JSON.parse(localStorage.getItem("favoriteItems"))
       : []
   );
+  const [count, setCount] = useState(0);
 
   function addToFavorites(item) {
     const isItemInFavorite = favoriteItems.find(
@@ -44,6 +45,9 @@ const CartProvider = ({ children }) => {
     setFavoriteItems(
       favoriteItems.filter((favoriteItem) => favoriteItem.id !== item.id)
     );
+  }
+  function cutFromCart(item) {
+    setCartItems(cartItems.filter((cartItem) => cartItem.id !== item.id));
   }
   function removeFromCart(item) {
     const isItemInCart = cartItems.find((cartItem) => cartItem.id === item.id);
@@ -86,6 +90,7 @@ const CartProvider = ({ children }) => {
       setCartItems(JSON.parse(cartItems));
     }
   }, []);
+
   useEffect(() => {
     const favoriteItems = localStorage.getItem("favoriteItems");
     if (favoriteItems) {
@@ -106,6 +111,9 @@ const CartProvider = ({ children }) => {
         favoriteItems,
         clearFavorites,
         removeFromFavorites,
+        count,
+        setCount,
+        cutFromCart,
       }}
     >
       {children}

@@ -22,6 +22,7 @@ import { NavContext } from "./App";
 import Footer from "./Footer";
 import ShopNavTop from "./ShopNavTop";
 import { CartContext } from "./CartProvider";
+import { shoes } from "./products/products";
 
 function Shop() {
   var productSettings = {
@@ -69,7 +70,7 @@ function Shop() {
   } = useContext(NavContext);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
   }, []);
 
   return (
@@ -109,7 +110,7 @@ function Shop() {
         <div className="new-panel border-b flex flex-col items-center justify-center gap-10 text-black p-14 pb-5 font-bodoni">
           <div className="new-panel-top flex flex-col gap-10">
             <div className="text-center flex gap-3 flex-col ">
-              <p className="headd text-3xl uppercase">WHAT'S NEW</p>
+              <p className="headd font-forum text-4xl uppercase">WHAT'S NEW</p>
               <NavLink
                 to="clothing"
                 className="lowercase border-b border-black w-fit self-center"
@@ -128,8 +129,10 @@ function Shop() {
             </div>
           </div>
 
-          <div className="new-panel-down relative mt-5">
-            <p className="headd font-bodoni uppercase">THE LATEST LIST</p>
+          <div className="new-panel-down font-forum relative mt-5">
+            <p className="headd uppercase text-2xl font-forum">
+              THE LATEST LIST
+            </p>
           </div>
         </div>
         {/* some section */}
@@ -223,31 +226,11 @@ function Shop() {
           </motion.div>
         </div>
 
-        {/* faculty closet */}
+        {/* shoes closet */}
         <div className="p-2 relative mt-5">
           <p className="font-sans closet-heading before:bg-neutral-400 after:bg-neutral-400 text-center text-2xl lowercase font-normal text-oranges">
-            men closet
+            shoes closet
           </p>
-          {loading && (
-            <div className="flex items-center justify-center relative mt-16">
-              <span className="loading loading-spinner text-primary"></span>
-              <span className="loading loading-spinner text-secondary"></span>
-              <span className="loading loading-spinner text-accent"></span>
-              <span className="loading loading-spinner text-neutral"></span>
-              <span className="loading loading-spinner text-info"></span>
-              <span className="loading loading-spinner text-success"></span>
-              <span className="loading loading-spinner text-warning"></span>
-              <span className="loading loading-spinner text-error"></span>
-            </div>
-          )}
-          {errorMessage && (
-            <div className="flex flex-col justify-center text-neutral-600 mt-10">
-              <p className="text-center">{errorMessage}</p>
-              <button onClick={fetchData} className="text-center">
-                Refresh
-              </button>
-            </div>
-          )}
 
           <motion.div
             initial={{
@@ -264,23 +247,21 @@ function Shop() {
             }}
             className="flex flex-wrap p-2"
           >
-            {products.map((product) => {
+            {shoes.slice(0, 4).map((product) => {
               return (
                 <div key={product.id} className="relative mt-10 w-1/2">
                   <div className="flex h-96 p-5 cursor-pointer flex-col items-center justify-center gap-2 w-fit">
                     <img
                       className="w-44 h-44"
-                      src={`https://${product.imageUrl}`}
+                      src={`${product.image}`}
                       alt=""
                     />
                     <p className="text-center relative text-[14px] mt-2 uppercase text-oranges">
-                      {product.brandName}
+                      {product.category}
                     </p>
                     <p className="text-center text-[14px]">{product.name}</p>
-                    <p className="text-center">
-                      ${product.price.current.value}
-                    </p>
-                    <button className="border btn border-black p-2">
+                    <p className="text-center">${product.price}</p>
+                    <button className="border btn border-black text-white bg-black p-2">
                       add to cart
                     </button>
                   </div>
@@ -292,7 +273,7 @@ function Shop() {
           <div className="flex items-center justify-center relative mt-10">
             <NavLink
               to="shoes"
-              className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg font-bodoni bg-oranges border-oranges text-white"
+              className="btn font-bodoni bg-oranges border-oranges text-white"
             >
               explore more
               <FontAwesomeIcon
@@ -306,7 +287,7 @@ function Shop() {
         {/* beyond fashion */}
         <div className="relative mt-5">
           <p className="font-sans closet-heading before:bg-neutral-400 after:bg-neutral-400 text-center text-2xl lowercase font-normal text-oranges">
-            beyond
+            beyond fashion
           </p>
 
           <div className="some-section relative mt-10">
@@ -315,39 +296,39 @@ function Shop() {
                 <div className="image font-bodoni w-[50%] bg-yellow-400 p-5 flex flex-col items-center h-64 justify-center">
                   <h1 className="text-3xl text-white">UP TO</h1>
                   <h1 className="text-4xl">40% OFF</h1>
-                  {/* <img
-                  src="https://img.freepik.com/free-photo/medium-shot-woman-with-pink-outfit_23-2149068995.jpg?t=st=1736090422~exp=1736094022~hmac=435f3ff5396e236d967f7c84f65b6ba6ed84c28f196c1b05390a1bbad6e394bd&w=360"
-                  className="h-full"
-                /> */}
                 </div>
                 <div className="description gap-5 relative p-2 flex flex-col w-[50%] text-black">
                   <div className="text-3xl">
                     <p>One in a milli skin cares on sale now!</p>
                   </div>
                   <div>
-                    <button className="lowercase border-b border-black w-fit">
+                    <NavLink
+                      to="beyond-fashion"
+                      className="lowercase border-b border-black w-fit"
+                    >
                       Shop skincares
-                    </button>
+                    </NavLink>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="section-2 relative mt-3 border border-t-neutral-400  p-3">
+            <div className="section-1 relative mt-3 border p-3 border-t-neutral-400 pt-5">
               <div className="flex items-center flex-row gap-4">
-                <div className="image w-[50%]">
-                  <img
-                    src="https://img.freepik.com/free-photo/portrait-fashionable-boy-posing_23-2148184645.jpg?t=st=1736096751~exp=1736100351~hmac=5c861bc7dcc6e44a811b1561a425a13a40b7aba53027a409ef3b2c4a5c08e57d&w=360"
-                    className="h-full"
-                  />
+                <div className="image font-bodoni w-[50%] bg-green-700 p-5 flex flex-col items-center h-64 justify-center">
+                  <h1 className="text-2xl text-yellow-500">africa beauty</h1>
+                  <h1 className="text-4xl">80% OFF</h1>
                 </div>
                 <div className="description gap-5 relative p-2 flex flex-col w-[50%] text-black">
                   <div className="text-3xl">
-                    <p>Erderm Pre Fall 25: Paintly Pronts</p>
+                    <p>Beauty africa face refresher on sale now!</p>
                   </div>
                   <div>
-                    <button className="lowercase border-b border-black w-fit">
-                      Shop now
-                    </button>
+                    <NavLink
+                      to="beyond-fashion"
+                      className="lowercase border-b border-black w-fit"
+                    >
+                      Shop skincares
+                    </NavLink>
                   </div>
                 </div>
               </div>
@@ -371,21 +352,24 @@ function Shop() {
               }}
               className="section-3 relative mt-3 border border-t-neutral-400 p-3"
             >
-              <div className="flex items-center flex-row gap-4">
-                <div className="image w-[50%]">
-                  <img
-                    src="https://img.freepik.com/free-photo/portrait-young-handsome-male_23-2148884404.jpg?t=st=1736097032~exp=1736100632~hmac=4903b21b4de892867a137fd647ac345e7b8699359daa82238760a15d8b73025f&w=360"
-                    className="h-full"
-                  />
-                </div>
-                <div className="description gap-5 relative p-2 flex flex-col w-[50%] text-black">
-                  <div className="text-3xl">
-                    <p>Trending Now: Citrus Hues, Spectacles & More</p>
+              <div className="section-1 relative mt-3 border p-3">
+                <div className="flex items-center flex-row gap-4">
+                  <div className="image font-bodoni w-[50%] bg-red-400 p-5 flex flex-col items-center h-64 justify-center">
+                    <h1 className="text-3xl text-white font-forum">EAT GOOD</h1>
+                    <h1 className="text-4xl text-black">chickens and more</h1>
                   </div>
-                  <div>
-                    <button className="lowercase border-b border-black w-fit">
-                      Shop pants
-                    </button>
+                  <div className="description gap-5 relative p-2 flex flex-col w-[50%] text-black">
+                    <div className="text-3xl">
+                      <p>Good Foods for your body on sale!</p>
+                    </div>
+                    <div>
+                      <NavLink
+                        to="beyond-fashion"
+                        className="lowercase border-b border-black w-fit"
+                      >
+                        Shop groceries
+                      </NavLink>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -456,7 +440,7 @@ function Shop() {
                   </NavLink>
                   <button
                     onClick={() => addToCart(product)}
-                    className="border text-white border-black p-2 btn"
+                    className="border bg-black text-white border-black p-2 btn"
                   >
                     add to cart
                   </button>

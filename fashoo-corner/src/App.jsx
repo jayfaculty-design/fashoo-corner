@@ -62,6 +62,7 @@ export default function App({ children }) {
       .catch((error) => {
         console.log(error);
         setErrorMessage("Cannot retrieve data, please try again");
+        setLoading(false);
       });
   }
 

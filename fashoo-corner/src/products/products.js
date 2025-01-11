@@ -1,3 +1,184 @@
+export const shoes = [
+  {
+    id: 1,
+    name: "Fashoo White Sneakers",
+    price: 39.99,
+    image:
+      "https://images.asos-media.com/products/asos-design-chunky-trainers-in-white-mesh-and-faux-leather-panelling/206724539-1-white?$n_640w$&wid=513&fit=constrain",
+    color: "White",
+    category: "Sneakers",
+    sizes: [38, 39, 40, 41, 42],
+    description: "Classic white sneakers perfect for casual and everyday wear.",
+  },
+  {
+    id: 2,
+    name: "ASOS Black Running Shoes",
+    price: 49.99,
+    image:
+      "https://images.asos-media.com/products/adidas-running-runfalcon-trainers-in-black/206880357-1-black?$n_640w$&wid=513&fit=constrain",
+    category: "Sneakers",
+    color: "Black",
+    sizes: [40, 41, 42, 43, 44],
+    description:
+      "Lightweight and comfortable running shoes for all-day support.",
+  },
+  {
+    id: 3,
+    name: "Fashoo Brown Leather Boots",
+    price: 59.99,
+    image:
+      "https://images.asos-media.com/products/asos-design-heeled-chelsea-boots-in-brown-leather-with-square-toe/206888980-1-brown?$n_640w$&wid=513&fit=constrain",
+    category: "Sneakers",
+    color: "Brown",
+    sizes: [39, 40, 41, 42, 43],
+    description: "Stylish leather boots for a smart and rugged look.",
+  },
+  {
+    id: 4,
+    name: "Stylish Blue Casual Loafers",
+    price: 29.99,
+    image:
+      "https://images.asos-media.com/products/asos-design-match-penny-loafer-in-black/206616368-1-blackpu?$n_640w$&wid=513&fit=constrain",
+    category: "Sneakers",
+    color: "Black",
+    sizes: [38, 39, 40, 41],
+    description: "Comfortable loafers with a modern design for casual outings.",
+  },
+  {
+    id: 5,
+    name: "Baddy Red High-Top Sneakers",
+    price: 49.99,
+    category: "Sneakers",
+    image:
+      "https://images.asos-media.com/products/converse-chuck-taylor-all-star-hi-trainers-in-red/204109066-1-red?$n_640w$&wid=513&fit=constrain",
+    color: "Red",
+    sizes: [39, 40, 41, 42, 43],
+    description: "Bold and trendy high-top sneakers to make a statement.",
+  },
+  {
+    id: 6,
+    name: "ASOS Grey Slip-On Shoes",
+    price: 24.99,
+    image:
+      "https://images.asos-media.com/products/teva-reember-terrain-slip-on-padded-mules-in-grey/206785396-1-grey?$n_640w$&wid=513&fit=constrain",
+    category: "Sneakers",
+    color: "Grey",
+    sizes: [37, 38, 39, 40],
+    description: "Minimalistic slip-on shoes for effortless style and comfort.",
+  },
+  {
+    id: 7,
+    name: "Jay Green Hiking Boots",
+    price: 79.99,
+    image:
+      "https://images.asos-media.com/products/asos-design-lace-up-hiker-boot-in-khaki-with-chunky-sole/206354460-1-khaki?$n_640w$&wid=513&fit=constrain",
+    category: "Sneakers",
+    color: "Green",
+    sizes: [39, 40, 41, 42, 43, 44],
+    description:
+      "Durable hiking boots designed for tough terrains and comfort.",
+  },
+  {
+    id: 8,
+    name: "Fashoo Yellow Canvas Shoes",
+    price: 85.99,
+    image:
+      "https://images.asos-media.com/products/nike-running-reactx-infinity-run-4-trainers-in-yellow/206103808-1-yellow?$n_640w$&wid=513&fit=constrain",
+    category: "Sneakers",
+    color: "Yellow",
+    sizes: [38, 39, 40, 41],
+    description: "Bright canvas shoes to add a pop of color to your outfit.",
+  },
+  {
+    id: 9,
+    name: "ASOS Navy Sports Trainers",
+    image:
+      "https://images.asos-media.com/products/vans-sport-low-trainersin-whie-and-navy/206985718-1-whitenavy?$n_640w$&wid=513&fit=constrain",
+    price: 59.99,
+    category: "Sneakers",
+    color: "Navy",
+    sizes: [40, 41, 42, 43, 44],
+    description: "Sporty trainers with excellent grip and cushioning.",
+  },
+  {
+    id: 10,
+    name: "Unique Beige Desert Boots",
+    price: 49.99,
+    image:
+      "https://images.asos-media.com/products/asos-design-lace-up-desert-boots-in-brown-suede-with-natural-sole/206354777-1-brown?$n_640w$&wid=513&fit=constrain",
+    category: "Sneakers",
+    color: "Brown",
+    sizes: [39, 40, 41, 42],
+    description: "Stylish desert boots with a modern twist.",
+  },
+  {
+    id: 11,
+    name: "Classic Purple Party Heels",
+    price: 79.99,
+    image: "https://via.placeholder.com/150",
+    category: "Sneakers",
+    color: "Purple",
+    sizes: [36, 37, 38, 39, 40],
+    description: "Elegant party heels for a stunning evening look.",
+  },
+  {
+    id: 12,
+    name: "Pink Ballet Flats",
+    image:
+      "https://images.asos-media.com/products/daisy-street-platform-flared-heeled-shoes-in-lilac-glitter/204198378-1-lilac?$n_640w$&wid=513&fit=constrain",
+    category: "Sneakers",
+    price: 29.99,
+    color: "Pink",
+    sizes: [36, 37, 38, 39],
+    description: "Chic and comfortable ballet flats for everyday wear.",
+  },
+  {
+    id: 13,
+    name: "Fashoo Metallic Silver Sneakers",
+    price: 69.99,
+    image:
+      "https://images.asos-media.com/products/asos-design-trainers-in-silver-metallic-with-chunky-sole/206888679-1-silver?$n_640w$&wid=513&fit=constrain",
+    category: "Sneakers",
+    color: "Silver",
+    sizes: [39, 40, 41, 42, 43],
+    description: "Shiny metallic sneakers to stand out from the crowd.",
+  },
+  {
+    id: 14,
+    name: "Orange Running Trainers",
+    image:
+      "https://images.asos-media.com/products/nike-running-air-zoom-pegasus-41-premium-trainers-in-orange-and-silver/206616593-1-orange?$n_640w$&wid=513&fit=constrain",
+    price: 133.99,
+    category: "Sneakers",
+    color: "Orange",
+    sizes: [38, 39, 40, 41, 42],
+    description:
+      "Vibrant running trainers with breathable material for long runs.",
+  },
+  {
+    id: 15,
+    name: "Stone Platform Sandals",
+    image:
+      "https://images.asos-media.com/products/timberland-everleigh-platform-sandal-in-stone/205826198-1-stone?$n_640w$&wid=513&fit=constrain",
+    price: 39.99,
+    category: "Sneakers",
+    color: "Stone",
+    sizes: [37, 38, 39, 40],
+    description: "Trendy platform sandals for a summer-ready look.",
+  },
+  {
+    id: 16,
+    name: "Fashoo Gold Slip-On Mules",
+    image:
+      "https://images.asos-media.com/products/yours-slips-on-sandals-in-gold/206182445-1-gold?$n_640w$&wid=513&fit=constrain",
+    price: 49.99,
+    category: "Sneakers",
+    color: "Gold",
+    sizes: [36, 37, 38, 39],
+    description: "Elegant slip-on mules with a touch of luxury.",
+  },
+];
+
 export const clothing = [
   {
     id: 1,

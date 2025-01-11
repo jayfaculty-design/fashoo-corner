@@ -2,13 +2,13 @@ import React, { useContext, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import ShopNavTop from "./ShopNavTop";
 import { NavLink, useParams } from "react-router";
-import { clothing } from "./products/products";
+import { shoes } from "./products/products";
 import { CartContext } from "./CartProvider";
 
-function ProductDetails2() {
+function ProductDetails4() {
   const { addToFavorites, addToCart } = useContext(CartContext);
   const { id } = useParams();
-  const product = clothing.find((pr) => pr.id === parseInt(id));
+  const product = shoes.find((pr) => pr.id === parseInt(id));
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -36,9 +36,9 @@ function ProductDetails2() {
       <div className="relative mt-16 gap-1 flex p-5">
         <NavLink
           className="underline lowercase underline-offset-4"
-          to="/shop/clothing"
+          to="/shop/shoes"
         >
-          clothing
+          shoes
         </NavLink>
         <p className="text-gray-500">/</p>
         <p className="lowercase">{product.name}</p>
@@ -95,7 +95,7 @@ function ProductDetails2() {
             <li>Category: {product.category}</li>
             <li>Color: {product.color}</li>
             <li>Size(s): {product.sizes}</li>
-            <li>Product Code: {product.sku}</li>
+            <li>Product Code: {product.sku || "None"}</li>
           </ul>
         </div>
       </div>
@@ -103,4 +103,4 @@ function ProductDetails2() {
   );
 }
 
-export default ProductDetails2;
+export default ProductDetails4;

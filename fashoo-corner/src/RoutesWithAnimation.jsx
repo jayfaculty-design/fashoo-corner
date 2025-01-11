@@ -18,6 +18,7 @@ import Cart from "./Cart";
 import Favorites from "./Favorites";
 import BeyondFashion from "./BeyondFashion";
 import ProductDetails3 from "./ProductDetails3";
+import ProductDetails4 from "./ProductDetails4";
 
 function RoutesWithAnimation() {
   const location = useLocation();
@@ -49,6 +50,10 @@ function RoutesWithAnimation() {
       <Route
         path="shop/clothing/products-details/:id"
         element={<ProductDetails2 />}
+      />
+      <Route
+        path="shop/shoes/products-details/:id"
+        element={<ProductDetails4 />}
       />
       <Route path="contact" element={<Contact />} />
     </Routes>

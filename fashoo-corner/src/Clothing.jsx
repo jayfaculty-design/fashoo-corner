@@ -8,10 +8,14 @@ import { CartContext } from "./CartProvider";
 function Clothing() {
   const [loading, setLoading] = useState(true);
   const { cartItems, addToCart } = useContext(CartContext);
+  const [items, setItems] = useState([]);
 
   useEffect(() => {
-    setLoading(true);
-    window.scrollTo(0, 0);
+    setTimeout(() => {
+      setItems(clothing);
+      window.scrollTo(0, 0);
+      setLoading(false);
+    }, 2000);
   }, []);
 
   const routeVariants = {
@@ -51,6 +55,18 @@ function Clothing() {
           </h1>
         </div>
 
+        {loading && (
+          <div className="flex items-center justify-center relative mt-16">
+            <span className="loading loading-spinner text-primary"></span>
+            <span className="loading loading-spinner text-secondary"></span>
+            <span className="loading loading-spinner text-accent"></span>
+            <span className="loading loading-spinner text-neutral"></span>
+            <span className="loading loading-spinner text-info"></span>
+            <span className="loading loading-spinner text-success"></span>
+            <span className="loading loading-spinner text-warning"></span>
+            <span className="loading loading-spinner text-error"></span>
+          </div>
+        )}
         <motion.div
           initial={{
             opacity: 0,
@@ -66,12 +82,12 @@ function Clothing() {
           }}
           className="grid grid-cols-2 grid-rows-2 gap-x-4 gap-y-7 p-4"
         >
-          {clothing.map((products) => {
+          {items.map((products) => {
             return (
               <div className="flex h-96 p-5 cursor-pointer flex-col items-center justify-center gap-2 w-fit">
                 <NavLink
                   key={products.id}
-                  to={`products-details/${products.id}`}
+                  to={`/shop/clothing/products-details/${products.id}`}
                 >
                   <img
                     src={products.image_url}

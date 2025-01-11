@@ -10,9 +10,8 @@ function Jelweries() {
   const [errorMessage, setErrorMessage] = useState("");
   const { addToCart } = useContext(CartContext);
 
-  useEffect(() => {
+  function fetchData() {
     setLoading(true);
-    window.scrollTo(0, 0);
     setErrorMessage("");
 
     axios({
@@ -23,12 +22,19 @@ function Jelweries() {
         console.log(response.data);
         setProducts(response.data);
         setErrorMessage("");
+        setLoading(false);
       })
       .finally(() => setLoading(false))
       .catch((error) => {
         console.log(error);
         setErrorMessage("Error loading Products please try again later");
+        setLoading(false);
       });
+  }
+
+  useEffect(() => {
+    fetchData();
+    window.scrollTo(0, 0);
   }, []);
 
   const routeVariants = {
@@ -68,7 +74,7 @@ function Jelweries() {
 
         <div>
           {loading && (
-            <div className="flex justify-center relative mt-16">
+            <div className="flex justify-center relative mt-16 pb-36">
               <span className="loading loading-spinner text-primary"></span>
               <span className="loading loading-spinner text-secondary"></span>
               <span className="loading loading-spinner text-accent"></span>
@@ -80,8 +86,9 @@ function Jelweries() {
             </div>
           )}
           {errorMessage && (
-            <div className="flex flex-col justify-center text-neutral-600">
+            <div className="flex flex-col justify-center text-neutral-600 mt-12 pb-36">
               <p className="text-center">{errorMessage}</p>
+              <button onClick={() => fetchData()}>Refresh</button>
             </div>
           )}
         </div>
@@ -122,7 +129,7 @@ function Jelweries() {
                   </NavLink>
                   <button
                     onClick={() => addToCart(product)}
-                    className="border border-black p-2 "
+                    className="border btn border-black font-medium bg-black text-white p-2 "
                   >
                     Add to cart
                   </button>

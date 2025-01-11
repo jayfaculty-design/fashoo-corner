@@ -5,18 +5,18 @@ import { CartContext } from "./CartProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTruck } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router";
-
+import { clothing } from "./products/products";
 // const { cartItems, setCartItems } = useContext(CartContext);
 
 function Cart() {
   const {
     cartItems,
-    setCartItems,
     addToCart,
     removeFromCart,
     clearCart,
     getTotal,
     addToFavorites,
+    cutFromCart,
   } = useContext(CartContext);
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -43,7 +43,7 @@ function Cart() {
         className="h-full bg-white p-5"
       >
         <div className="flex justify-between items-center mt-16">
-          <h1 className="text-2xl font-forum">My Bag</h1>
+          <h1 className="text-3xl font-forum">My Bag</h1>
           <p className="text-[14px] text-neutral-600">
             Items are reserved for 60 minutes
           </p>
@@ -74,6 +74,39 @@ function Cart() {
               >
                 Shop Products
               </NavLink>
+              <div className="flex items-center justify-center mt-24">
+                <h1 className="text-center text-[18px] font-forum font-bold">
+                  LOOKING FOR THESE...?
+                </h1>
+              </div>
+              <div className="grid grid-cols-2 grid-rows-2 mt-5">
+                {clothing.slice(0, 4).map((clothings) => {
+                  return (
+                    <>
+                      <div
+                        className="p-5 flex flex-col gap-3"
+                        key={clothings.id}
+                      >
+                        <img
+                          className="w-[100px]"
+                          src={clothings.image_url}
+                          alt=""
+                        />
+                        <p className="font-bold font-forum">
+                          ${clothings.price.toFixed(2)}
+                        </p>
+                        <p className="text-neutral-600">{clothings.name}</p>
+                        <button
+                          onClick={() => addToCart(clothings)}
+                          className="btn w-full bg-black text-white"
+                        >
+                          add to cart
+                        </button>
+                      </div>
+                    </>
+                  );
+                })}
+              </div>
             </div>
           ) : (
             cartItems.map((item) => {
@@ -84,7 +117,7 @@ function Cart() {
                     className="mt-10 flex justify-between items-start"
                   >
                     <img
-                      src={item.image || item.image_url || item.images[0]}
+                      src={item.image || item.image_url}
                       className="w-[120px]"
                       alt=""
                     />
@@ -143,7 +176,7 @@ function Cart() {
                         Save for later
                       </button>
                     </div>
-                    <button onClick={() => removeFromCart(item)}>
+                    <button onClick={() => cutFromCart(item)}>
                       <img
                         width="16"
                         height="16"

@@ -1,39 +1,26 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Outlet, Link, NavLink } from "react-router";
 import { motion } from "framer-motion";
-import { NavContext } from "./App";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import axios from "axios";
 import ShopNavTop from "./ShopNavTop";
+import { shoes } from "./products/products";
+import { CartContext } from "./CartProvider";
 
 function Shoes() {
-  const { loading, errorMessage, setErrorMessage } = useContext(NavContext);
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const { addToCart } = useContext(CartContext);
 
+  function fetchData() {
+    setProducts(shoes);
+  }
   useEffect(() => {
-    axios({
-      method: "get",
-      url: "https://asos2.p.rapidapi.com/products/v2/list?store=US&offset=0&categoryId=4209&country=US&sort=freshness&currency=USD&sizeSchema=US&limit=20&lang=en-US",
-      headers: {
-        "x-rapidapi-host": "asos2.p.rapidapi.com",
-        "x-rapidapi-key": "848cdd11b1msh7adfec8147814dbp135c7bjsnaffe2ec3ddb2",
-      },
-    })
-      .then((response) => {
-        setProducts(response.data.products);
-      })
-      .catch((error) => {
-        if (error.response) {
-          console.log("Error Response:", error.response.data);
-          setErrorMessage("Cannot retrieve products, try again later");
-        } else {
-          console.log("Error", error.message);
-        }
-      });
-
     window.scrollTo(0, 0);
+    setTimeout(() => {
+      fetchData();
+      setLoading(false);
+    }, 2000);
   }, []);
+
   const routeVariants = {
     initial: {
       y: "100vh",
@@ -52,7 +39,7 @@ function Shoes() {
       variants={routeVariants}
       initial="initial"
       animate="final"
-      className="h-full"
+      className="h-full bg-white"
     >
       {/* Start */}
       <ShopNavTop />
@@ -63,7 +50,6 @@ function Shoes() {
         <p className="text-gray-500">/</p>
         <p className="lowercase">Shoes</p>
       </div>
-
       <div className="p-5 flex">
         <h1 className="text-3xl font-light font-sans">Men's Designer Shoes</h1>
       </div>
@@ -79,33 +65,42 @@ function Shoes() {
           <span className="loading loading-spinner text-error"></span>
         </div>
       )}
-      {errorMessage && (
-        <div className="flex flex-col justify-center text-neutral-600 mt-16">
-          <p className="text-center">{errorMessage}</p>
-        </div>
-      )}
-      {!loading && !errorMessage && (
-        <div className="grid grid-cols-3 grid-rows-2 gap-x-4 gap-y-7 p-4">
-          {products.map((product) => {
-            return (
+
+      <div className="grid grid-cols-2 grid-rows-2 gap-x-4 gap-y-7 p-4">
+        {products.map((product) => {
+          return (
+            <>
               <div
                 key={product.id}
                 className="flex gap-2 flex-col items-center hover:border-black rounded-md"
               >
-                <img
-                  className="w-[250px] h-[250px]"
-                  src={`https://${product.imageUrl}`}
-                  alt="images"
-                />
-                <p className="uppercase text-oranges">{product.brandName}</p>
-                <p className="text-center text-[14px]">{product.name}</p>
-                <p>{product.price.current.text}</p>
-                <button className="border border-black p-2">Add to cart</button>
+                <NavLink
+                  to={`/shop/shoes/products-details/${product.id}`}
+                  className="flex flex-col items-center"
+                >
+                  <img
+                    className="w-[250px] h-[250px]"
+                    src={`${product.image}`}
+                    alt={`${product.name} image`}
+                  />
+                  <p className="uppercase text-oranges text-center">
+                    {product.category}
+                  </p>
+                  <p className="text-center text-[14px]">{product.name}</p>
+                  <p>{product.price}</p>
+                </NavLink>
+
+                <button
+                  onClick={() => addToCart(product)}
+                  className="border btn border-black font-medium bg-black text-white p-2"
+                >
+                  Add to cart
+                </button>
               </div>
-            );
-          })}
-        </div>
-      )}
+            </>
+          );
+        })}
+      </div>
     </motion.div>
   );
 }
