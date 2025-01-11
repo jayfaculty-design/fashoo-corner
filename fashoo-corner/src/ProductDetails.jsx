@@ -6,12 +6,14 @@ import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import ShopNavTop from "./ShopNavTop";
+import { CartContext } from "./CartProvider";
 
 function ProductDetails() {
   const { id } = useParams();
 
   const [product, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { cartItems, addToCart, addToFavorites } = useContext(CartContext);
 
   const [errorMessage, setErrorMessage] = useState("");
   const fetchData = () => {
@@ -110,10 +112,16 @@ function ProductDetails() {
           <p className="font-bold font-bodoni text-oranges">{product.title}</p>
           <p className="text-neutral-500">{product.description}</p>
           <p className="font-bold font-sans">${product.price}</p>
-          <button className="uppercase border p-2 bg-black text-white relative mt-5">
+          <button
+            onClick={() => addToCart(product)}
+            className="uppercase font-forum btn border p-2 rounded-none bg-black text-white relative mt-5"
+          >
             Add to cart
           </button>
-          <button className="uppercase border border-black p-2 bg-neutral-100 flex items-center justify-center gap-3">
+          <button
+            onClick={() => addToFavorites(product)}
+            className="uppercase font-forum border  text-black btn rounded-none hover:bg-neutral-400 border-black p-2 bg-neutral-100 flex items-center justify-center gap-3"
+          >
             <img
               width="16"
               height="16"

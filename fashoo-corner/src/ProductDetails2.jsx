@@ -6,7 +6,7 @@ import { clothing } from "./products/products";
 import { CartContext } from "./CartProvider";
 
 function ProductDetails2() {
-  const { addToFavorites } = useContext(CartContext);
+  const { addToFavorites, addToCart } = useContext(CartContext);
   const { id } = useParams();
   const product = clothing.find((pr) => pr.id === parseInt(id));
 
@@ -56,12 +56,15 @@ function ProductDetails2() {
           <p className="font-bold font-bodoni text-oranges">{product.name}</p>
           <p className="text-neutral-500">{product.description}</p>
           <p className="font-bold font-sans">${product.price}</p>
-          <button className="uppercase border p-2 bg-black text-white relative mt-5">
+          <button
+            onClick={() => addToCart(product)}
+            className="uppercase font-forum btn border p-2 rounded-none bg-black text-white relative mt-5"
+          >
             Add to cart
           </button>
           <button
             onClick={() => addToFavorites(product)}
-            className="uppercase border border-black p-2 bg-neutral-100 flex items-center justify-center gap-3"
+            className="uppercase font-forum border  text-black btn rounded-none hover:bg-neutral-400 border-black p-2 bg-neutral-100 flex items-center justify-center gap-3"
           >
             <img
               width="16"

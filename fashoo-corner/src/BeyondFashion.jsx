@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import ShopNavTop from "./ShopNavTop";
 import { NavLink } from "react-router";
 import axios from "axios";
+import { CartContext } from "./CartProvider";
 
 function BeyondFashion() {
   const routeVariants = {
@@ -20,6 +21,7 @@ function BeyondFashion() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
+  const { addToCart } = useContext(CartContext);
   const randomProducts = () => {
     setLoading(true);
     setErrorMessage("");
@@ -114,7 +116,10 @@ function BeyondFashion() {
                     ${`${product.price.toFixed(2)}`}
                   </p>
                 </NavLink>
-                <button className="border border-black font-medium bg-black text-white p-2 ">
+                <button
+                  onClick={() => addToCart(product)}
+                  className="border btn border-black font-medium bg-black text-white p-2  "
+                >
                   Add to Cart
                 </button>
               </div>

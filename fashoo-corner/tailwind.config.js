@@ -14,6 +14,7 @@ export default {
       fontFamily: {
         syne: ["Syne", "serif"],
         bodoni: ["Bodoni Moda", "serif"],
+        forum: ["Forum", "serif"],
       },
     },
   },

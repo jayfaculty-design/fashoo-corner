@@ -86,7 +86,7 @@ function Clothing() {
                 </NavLink>
                 <button
                   onClick={() => addToCart(products)}
-                  className="border border-black font-medium bg-black text-white p-2 "
+                  className="border btn border-black font-medium bg-black text-white p-2 "
                 >
                   Add to cart
                 </button>

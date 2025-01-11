@@ -7,7 +7,8 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router";
 
 function Favorites() {
-  const { favoriteItems, clearFavorites } = useContext(CartContext);
+  const { favoriteItems, clearFavorites, removeFromFavorites } =
+    useContext(CartContext);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -33,7 +34,7 @@ function Favorites() {
         className="h-full bg-white"
       >
         <div className="p-5 flex mt-16 items-center justify-between">
-          <h1 className="text-2xl font-sans font-normal">Saved Items</h1>
+          <h1 className="text-2xl font-forum font-normal">Saved Items</h1>
           <p
             onClick={() => clearFavorites()}
             className="text-neutral-700 cursor-pointer underline underline-offset-2"
@@ -59,7 +60,7 @@ function Favorites() {
               return (
                 <div key={item.id} className="flex flex-col gap-2 w-[150px]">
                   <img
-                    src={`${item.image || item.image_url}`}
+                    src={`${item.image || item.image_url || item.images[0]}`}
                     alt={`${item.name} image`}
                     className="w-[150px]"
                   />
@@ -71,8 +72,9 @@ function Favorites() {
                       ${item.price.toFixed(2)}
                     </p>
                     <FontAwesomeIcon
+                      onClick={() => removeFromFavorites(item)}
                       icon={faTrash}
-                      className="text-green-500"
+                      className="text-green-500 cursor-pointer"
                     />
                   </div>
 

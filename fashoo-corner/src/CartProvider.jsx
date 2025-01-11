@@ -40,6 +40,11 @@ const CartProvider = ({ children }) => {
     }
   }
 
+  function removeFromFavorites(item) {
+    setFavoriteItems(
+      favoriteItems.filter((favoriteItem) => favoriteItem.id !== item.id)
+    );
+  }
   function removeFromCart(item) {
     const isItemInCart = cartItems.find((cartItem) => cartItem.id === item.id);
 
@@ -67,6 +72,7 @@ const CartProvider = ({ children }) => {
   function clearFavorites() {
     setFavoriteItems([]);
   }
+
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }, [cartItems]);
@@ -99,6 +105,7 @@ const CartProvider = ({ children }) => {
         addToFavorites,
         favoriteItems,
         clearFavorites,
+        removeFromFavorites,
       }}
     >
       {children}

@@ -68,6 +68,10 @@ function Shop() {
     fetchData,
   } = useContext(NavContext);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div>
       <ShopNavTop />
@@ -276,7 +280,7 @@ function Shop() {
                     <p className="text-center">
                       ${product.price.current.value}
                     </p>
-                    <button className="border border-black p-2">
+                    <button className="border btn border-black p-2">
                       add to cart
                     </button>
                   </div>
@@ -452,7 +456,7 @@ function Shop() {
                   </NavLink>
                   <button
                     onClick={() => addToCart(product)}
-                    className="border border-black p-2 "
+                    className="border text-white border-black p-2 btn"
                   >
                     add to cart
                   </button>
