@@ -58,7 +58,7 @@ function Jelweries() {
         animate="final"
         className="h-full bg-white"
       >
-        <div className="relative mt-16 gap-1 flex p-5">
+        <div className="relative mt-16 lg:mt-32 gap-1 flex p-5">
           <NavLink
             className="underline lowercase underline-offset-4"
             to="/shop"
@@ -69,7 +69,9 @@ function Jelweries() {
           <p className="lowercase">Jelweries</p>
         </div>
         <div className="p-5 flex">
-          <h1 className="text-3xl font-light font-sans">Cool Jelweries</h1>
+          <h1 className="text-3xl lg:text-4xl font-light font-sans">
+            Cool Jelweries
+          </h1>
         </div>
 
         <div>
@@ -111,7 +113,7 @@ function Jelweries() {
           >
             {products.map((product) => {
               return (
-                <div className="flex h-96 p-5 cursor-pointer flex-col items-center justify-center gap-2 w-fit">
+                <div className="flex h-96 p-5 flex-col items-center justify-center gap-2">
                   <NavLink
                     key={product.id}
                     to={`/shop/product-details/${product.id}`}

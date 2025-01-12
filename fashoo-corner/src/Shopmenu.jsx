@@ -45,10 +45,6 @@ function Shopmenu() {
           </div>
 
           <div className="relative mt-1 flex flex-col gap-5 border-b border-neutral-300 pb-5">
-            <div className="cursor-pointer flex items-center justify-between">
-              <p>Accesories</p>
-              <p className="font-extralight text-[15px]">{">"}</p>
-            </div>
             <NavLink
               to="/shop/jelweries"
               className="cursor-pointer flex items-center justify-between"

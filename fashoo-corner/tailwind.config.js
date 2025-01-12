@@ -16,6 +16,12 @@ export default {
         bodoni: ["Bodoni Moda", "serif"],
         forum: ["Forum", "serif"],
       },
+      screens: {
+        sm: "480px",
+        md: "768px",
+        lg: "800px",
+        xl: "1440px",
+      },
     },
   },
   plugins: [require("flowbite/plugin"), require("daisyui")],

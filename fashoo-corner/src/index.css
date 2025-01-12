@@ -11,7 +11,7 @@
 }
 body {
   margin: 0;
-  background: #e6e6e6;
+  background: white;
   color: black;
 }
 
@@ -69,4 +69,7 @@ body {
 }
 .menu-btn.hide {
   display: none;
+}
+.scroll-btn.show {
+  display: flex;
 }

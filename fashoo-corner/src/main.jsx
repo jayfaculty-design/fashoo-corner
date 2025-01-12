@@ -14,6 +14,7 @@ import RoutesWithAnimation from "./RoutesWithAnimation";
 import Menu from "./Menu";
 import Shopmenu from "./Shopmenu";
 import Footer from "./Footer";
+import ScrollComp from "./scrollTop";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -26,6 +27,7 @@ createRoot(document.getElementById("root")).render(
             <RoutesWithAnimation />
           </LocationProvider>
           <Footer />
+          <ScrollComp />
         </App>
       </AnimatePresence>
     </BrowserRouter>

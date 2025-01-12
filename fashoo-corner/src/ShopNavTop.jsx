@@ -124,7 +124,7 @@ function ShopNavTop() {
             </div>
             <div className="flex items-center justify-between">
               <NavLink to="/shop">
-                <p className="font-semibold text-xl text-oranges relative">
+                <p className="font-semibold lg:text-2xl lg:left-12 text-oranges relative">
                   fashoo corner
                 </p>
               </NavLink>
@@ -184,16 +184,25 @@ function ShopNavTop() {
             />
           </div>
 
-          <div className="hidden top-bottom lg:flex justify-center items-center gap-5 relative mt-4 text-[14px] text-black">
-            <a href="">New</a>
-            <a href="">clothing</a>
-            <a href="">jewelry</a>
-            <a href="">accessories</a>
-            <a href="">stylists</a>
-            <a href="">shoes</a>
-            <a href="">bags</a>
-            <a href="">designers</a>
-            <a href="">hot</a>
+          <div className="hidden top-bottom lg:flex justify-center items-center gap-10 relative mt-4 text-[14px] text-black">
+            <NavLink className="lowercase" to="/shop">
+              Home
+            </NavLink>
+            <NavLink className="lowercase" to="/shop/clothing">
+              New
+            </NavLink>
+            <NavLink className="lowercase" to="/shop/clothing">
+              clothing
+            </NavLink>
+            <NavLink className="lowercase" to="/shop/jelweries">
+              jelweries
+            </NavLink>
+            <NavLink className="lowercase" to="/shop/shoes">
+              shoes
+            </NavLink>
+            <NavLink className="lowercase" to="/shop/beyond-fashion">
+              beyond fashion
+            </NavLink>
           </div>
         </div>
       </motion.div>

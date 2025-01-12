@@ -53,7 +53,7 @@ function BeyondFashion() {
         animate="final"
         className="h-full bg-white"
       >
-        <div className="relative mt-16 gap-1 flex p-5">
+        <div className="relative mt-16 lg:mt-32 gap-1 flex p-5">
           <NavLink
             className="underline lowercase underline-offset-4"
             to="/shop"
@@ -64,7 +64,9 @@ function BeyondFashion() {
           <p className="lowercase">Beyond Fashion</p>
         </div>
         <div className="p-5 flex">
-          <h1 className="text-3xl font-light font-sans">Beyond Fashion</h1>
+          <h1 className="text-3xl lg:text-4xl font-light font-sans">
+            Beyond Fashion
+          </h1>
         </div>
         <div className="flex justify-center">
           {errorMessage && (
@@ -87,7 +89,7 @@ function BeyondFashion() {
           )}
         </div>
         <motion.div
-          className="grid grid-cols-2 grid-rows-2 gap-x-4 gap-y-7 p-4"
+          className="grid grid-cols-2 lg:grid-cols-3 grid-rows-2 gap-x-4 gap-y-7 p-4"
           initial={{ opacity: 0 }}
           viewport={{
             once: true,
@@ -101,7 +103,7 @@ function BeyondFashion() {
         >
           {products.map((product) => {
             return (
-              <div className="flex h-96 p-5 cursor-pointer flex-col items-center justify-center gap-2 w-fit">
+              <div className="flex h-96 p-5 cursor-pointer flex-col items-center justify-center gap-2 ">
                 <NavLink to={`products-details/${product.id}`} key={product.id}>
                   <img
                     className="w-[250px] h-[250px]"

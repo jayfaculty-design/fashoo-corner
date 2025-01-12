@@ -39,11 +39,11 @@ function Shoes() {
       variants={routeVariants}
       initial="initial"
       animate="final"
-      className="h-full bg-white"
+      className="h-full bg-white pb-14"
     >
       {/* Start */}
       <ShopNavTop />
-      <div className="relative mt-16 gap-1 flex p-5">
+      <div className="relative mt-16 lg:mt-32 gap-1 flex p-5">
         <NavLink className="underline lowercase underline-offset-4" to="/shop">
           Shop
         </NavLink>
@@ -51,7 +51,9 @@ function Shoes() {
         <p className="lowercase">Shoes</p>
       </div>
       <div className="p-5 flex">
-        <h1 className="text-3xl font-light font-sans">Men's Designer Shoes</h1>
+        <h1 className="text-3xl lg:text-4xl font-light font-sans">
+          Men's Designer Shoes
+        </h1>
       </div>
       {loading && (
         <div className="flex items-center justify-center relative mt-16">
@@ -66,7 +68,7 @@ function Shoes() {
         </div>
       )}
 
-      <div className="grid grid-cols-2 grid-rows-2 gap-x-4 gap-y-7 p-4">
+      <div className="grid grid-cols-2 lg:grid-cols-3 grid-rows-2 gap-x-4 gap-y-7 p-4">
         {products.map((product) => {
           return (
             <>

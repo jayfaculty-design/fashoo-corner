@@ -37,9 +37,9 @@ function Clothing() {
         variants={routeVariants}
         initial="initial"
         animate="final"
-        className="h-full bg-white"
+        className="h-full bg-white pb-14"
       >
-        <div className="relative mt-16 gap-1 flex p-5">
+        <div className="relative mt-16 lg:mt-32 gap-1 flex p-5">
           <NavLink
             className="underline lowercase underline-offset-4"
             to="/shop"
@@ -50,7 +50,7 @@ function Clothing() {
           <p className="lowercase">clothing</p>
         </div>
         <div className="p-5 flex">
-          <h1 className="text-3xl font-light font-sans">
+          <h1 className="text-3xl lg:text-4xl font-light font-sans">
             Home Designer Clothes
           </h1>
         </div>
@@ -80,11 +80,11 @@ function Clothing() {
           viewport={{
             once: true,
           }}
-          className="grid grid-cols-2 grid-rows-2 gap-x-4 gap-y-7 p-4"
+          className="grid grid-cols-2 lg:grid-cols-3 grid-rows-2 gap-x-4 gap-y-7 p-4"
         >
           {items.map((products) => {
             return (
-              <div className="flex h-96 p-5 cursor-pointer flex-col items-center justify-center gap-2 w-fit">
+              <div className="flex gap-2 flex-col mt-5 items-center hover:border-black hover:borde rounded-md">
                 <NavLink
                   key={products.id}
                   to={`/shop/clothing/products-details/${products.id}`}
