@@ -84,14 +84,14 @@ function Menu() {
           }}
           className="flex gap-5"
         >
-          <a href="" target="_blank">
+          <a href="https://godfred-entsie.vercel.app/" target="_blank">
             <FontAwesomeIcon
               className="text-oranges"
               icon={faGlobe}
               size="xl"
             />
           </a>
-          <a href="" target="_blank">
+          <a href="https://github.com/jayfaculty-design" target="_blank">
             <FontAwesomeIcon
               className="text-oranges"
               icon={faGithub}
