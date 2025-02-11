@@ -5,6 +5,8 @@ import axios from "axios";
 import { clothing } from "./products/products";
 import { motion } from "framer-motion";
 import { CartContext } from "./CartProvider";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 function Clothing() {
   const [loading, setLoading] = useState(true);
   const { cartItems, addToCart } = useContext(CartContext);
@@ -101,8 +103,10 @@ function Clothing() {
                   <p className="text-center">${products.price}</p>
                 </NavLink>
                 <button
-                  onClick={() => addToCart(products)}
-                  className="border btn border-black font-medium bg-black text-white p-2 "
+                  onClick={() => {
+                    addToCart(products);
+                  }}
+                  className={`add-btn border btn border-black font-medium bg-black text-white p-2`}
                 >
                   Add to cart
                 </button>

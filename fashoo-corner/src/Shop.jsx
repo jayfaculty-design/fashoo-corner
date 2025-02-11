@@ -265,18 +265,24 @@ function Shop() {
                   key={product.id}
                   className="flex gap-2 flex-col mt-5 items-center rounded-md"
                 >
-                  <div className="flex h-96 p-5 cursor-pointer flex-col items-center justify-center gap-2 w-fit">
-                    <img
-                      className="w-44 h-44"
-                      src={`${product.image}`}
-                      alt=""
-                    />
+                  <div className="flex h-96 p-5 flex-col items-center justify-center gap-2 w-fit">
+                    <Link to={`/shop/shoes/products-details/${product.id}`}>
+                      <img
+                        className="w-44 h-44"
+                        src={`${product.image}`}
+                        alt=""
+                      />
+                    </Link>
+
                     <p className="text-center relative text-[14px] mt-2 uppercase text-oranges">
                       {product.category}
                     </p>
                     <p className="text-center text-[14px]">{product.name}</p>
                     <p className="text-center">${product.price}</p>
-                    <button className="border btn border-black text-white bg-black p-2">
+                    <button
+                      onClick={() => addToCart(product)}
+                      className="border btn border-black text-white bg-black p-2"
+                    >
                       add to cart
                     </button>
                   </div>

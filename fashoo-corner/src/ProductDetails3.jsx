@@ -59,7 +59,7 @@ function ProductDetails3() {
       className="h-full bg-white"
     >
       <ShopNavTop />
-      <div className="relative mt-16 gap-1 flex p-5">
+      <div className="relative mt-16 gap-1 flex p-5 lg:mt-32">
         <NavLink
           className="underline lowercase underline-offset-4"
           to="/shop/beyond-fashion"

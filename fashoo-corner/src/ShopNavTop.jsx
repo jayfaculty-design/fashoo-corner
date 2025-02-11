@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { NavContext } from "./App";
 import { motion } from "framer-motion";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -20,6 +20,7 @@ function ShopNavTop() {
   } = useContext(NavContext);
 
   const { count, setCount, cartItems } = useContext(CartContext);
+  const [activeNav, setActiveNav] = useState(false);
 
   useEffect(() => {
     setCount(cartItems.length);
@@ -185,7 +186,7 @@ function ShopNavTop() {
           </div>
 
           <div className="hidden top-bottom lg:flex justify-center items-center gap-10 relative mt-4 text-[14px] text-black">
-            <NavLink className="lowercase" to="/shop">
+            <NavLink className={`lowercase`} to="/shop">
               Home
             </NavLink>
             <NavLink className="lowercase" to="/shop/clothing">

@@ -74,7 +74,7 @@ function ProductDetails() {
       <ShopNavTop />
       {/* Start */}
 
-      <div className="relative mt-16 gap-1 flex p-5">
+      <div className="relative mt-16 gap-1 flex p-5 lg:mt-32">
         <NavLink className="underline lowercase underline-offset-4" to="/shop">
           Shop
         </NavLink>

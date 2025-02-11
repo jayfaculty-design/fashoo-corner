@@ -124,7 +124,7 @@ function Cart() {
                         className="mt-10 flex justify-between lg:justify-start border-b border-b-neutral-200  items-start pb-10 lg:gap-10"
                       >
                         <img
-                          src={item.image || item.image_url || item.images[0]}
+                          src={item.image || item.image_url}
                           className="w-[120px]"
                           alt=""
                         />
@@ -202,7 +202,7 @@ function Cart() {
             </div>
             <div>
               {cartItems.length > 0 ? (
-                <>
+                <div>
                   <div className="flex justify-between">
                     <div className="lg:hidden"></div>
                     <div className="flex gap-5 items-center lg:w-full lg:justify-between font-forum mt-10">
@@ -217,7 +217,7 @@ function Cart() {
                   <button className="bg-green-400 btn border-none w-full lg:w-[250px] p-3 text-white font-bold font-forum tracking-widest mt-5">
                     CHECKOUT
                   </button>
-                </>
+                </div>
               ) : (
                 <div></div>
               )}
