@@ -19,7 +19,7 @@ function ShopNavTop() {
     setMobileMenuShow,
   } = useContext(NavContext);
 
-  const { count, setCount, cartItems } = useContext(CartContext);
+  const { count, setCount, cartItems, favoriteItems } = useContext(CartContext);
   const [activeNav, setActiveNav] = useState(false);
 
   useEffect(() => {
@@ -135,7 +135,7 @@ function ShopNavTop() {
                 placeholder="Search"
                 className="border-none outline-none hidden lg:flex placeholder:text-[14px] text-[14px] text-black"
               />
-              <NavLink to="/shop/favorites">
+              <NavLink className="flex items-center gap-1" to="/shop/favorites">
                 <img
                   width="24"
                   height="24"
@@ -143,6 +143,9 @@ function ShopNavTop() {
                   alt="like--v1"
                   className="cursor-pointer"
                 />
+                <div className="count bg-oranges font-forum text-white p-1 h-5 w-5 rounded-full flex items-center justify-center">
+                  <p>{favoriteItems.length}</p>
+                </div>
               </NavLink>
 
               <NavLink to="/shop/cart" className="flex items-center">
