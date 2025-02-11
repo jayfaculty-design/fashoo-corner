@@ -21,6 +21,7 @@ function Cart() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
   const routeVariants = {
     initial: {
       y: "100vh",

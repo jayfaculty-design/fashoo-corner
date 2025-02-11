@@ -59,7 +59,7 @@ function Shop() {
     },
   };
 
-  const { addToCart } = useContext(CartContext);
+  const { addToCart, cartItems, removeFromCart } = useContext(CartContext);
   const [scrollBtn, setScrollBtn] = useState(false);
 
   const {
@@ -260,6 +260,7 @@ function Shop() {
             className="grid grid-cols-2 grid-rows- gap-x-4 gap-y-7 p-4"
           >
             {shoes.slice(0, 4).map((product) => {
+              const cartItem = cartItems.find((item) => item.id === product.id);
               return (
                 <div
                   key={product.id}
@@ -279,12 +280,21 @@ function Shop() {
                     </p>
                     <p className="text-center text-[14px]">{product.name}</p>
                     <p className="text-center">${product.price}</p>
-                    <button
-                      onClick={() => addToCart(product)}
-                      className="border btn border-black text-white bg-black p-2"
-                    >
-                      add to cart
-                    </button>
+                    {cartItem ? (
+                      <button
+                        onClick={() => removeFromCart(product)}
+                        className="border btn border-black text-white bg-black p-2"
+                      >
+                        remove from cart
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => addToCart(product)}
+                        className="border btn border-black text-white bg-black p-2"
+                      >
+                        add to cart
+                      </button>
+                    )}
                   </div>
                 </div>
               );
@@ -446,6 +456,7 @@ function Shop() {
             className="grid grid-cols-2 grid-rows- gap-x-4 gap-y-7 p-4"
           >
             {menClothing.map((product) => {
+              const cartItem = cartItems.find((item) => item.id === product.id);
               return (
                 <div
                   key={product.id}
@@ -466,12 +477,21 @@ function Shop() {
                     <p className="text-center text-[14px]">{product.title}</p>
                     <p className="text-center">${product.price}</p>
                   </NavLink>
-                  <button
-                    onClick={() => addToCart(product)}
-                    className="border bg-black text-white border-black p-2 btn"
-                  >
-                    add to cart
-                  </button>
+                  {cartItem ? (
+                    <button
+                      onClick={() => removeFromCart(product)}
+                      className="border btn border-black text-white bg-black p-2"
+                    >
+                      remove from cart
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => addToCart(product)}
+                      className="border btn border-black text-white bg-black p-2"
+                    >
+                      add to cart
+                    </button>
+                  )}
                 </div>
               );
               // console.log(product.imageUrl);
