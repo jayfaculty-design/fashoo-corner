@@ -8,7 +8,7 @@ function Jelweries() {
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
-  const { addToCart } = useContext(CartContext);
+  const { addToCart, removeFromCart, cartItems } = useContext(CartContext);
 
   function fetchData() {
     setLoading(true);
@@ -112,6 +112,7 @@ function Jelweries() {
             className="grid grid-cols-2 grid-rows-2 gap-x-4 gap-y-7 p-4"
           >
             {products.map((product) => {
+              const cartItem = cartItems.find((item) => item.id === product.id);
               return (
                 <div className="flex h-96 p-5 flex-col items-center justify-center gap-2">
                   <NavLink
@@ -129,12 +130,21 @@ function Jelweries() {
                     <p className="text-center text-[14px]">{product.name}</p>
                     <p className="text-center">${product.price}</p>
                   </NavLink>
-                  <button
-                    onClick={() => addToCart(product)}
-                    className="border btn border-black font-medium bg-black text-white p-2 "
-                  >
-                    Add to cart
-                  </button>
+                  {cartItem ? (
+                    <button
+                      onClick={() => removeFromCart(product)}
+                      className="border btn border-black text-white bg-black p-2"
+                    >
+                      remove from cart
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => addToCart(product)}
+                      className="border btn border-black text-white bg-black p-2"
+                    >
+                      add to cart
+                    </button>
+                  )}
                 </div>
               );
             })}

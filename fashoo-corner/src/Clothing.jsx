@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 function Clothing() {
   const [loading, setLoading] = useState(true);
-  const { cartItems, addToCart } = useContext(CartContext);
+  const { cartItems, addToCart, removeFromCart } = useContext(CartContext);
   const [items, setItems] = useState([]);
 
   useEffect(() => {
@@ -85,6 +85,7 @@ function Clothing() {
           className="grid grid-cols-2 lg:grid-cols-3 grid-rows-2 gap-x-4 gap-y-7 p-4"
         >
           {items.map((products) => {
+            const cartItem = cartItems.find((item) => item.id === products.id);
             return (
               <div className="flex gap-2 flex-col mt-5 items-center hover:border-black hover:borde rounded-md">
                 <NavLink
@@ -102,14 +103,21 @@ function Clothing() {
                   <p className="text-center text-[14px]">{products.name}</p>
                   <p className="text-center">${products.price}</p>
                 </NavLink>
-                <button
-                  onClick={() => {
-                    addToCart(products);
-                  }}
-                  className={`add-btn border btn border-black font-medium bg-black text-white p-2`}
-                >
-                  Add to cart
-                </button>
+                {cartItem ? (
+                  <button
+                    onClick={() => removeFromCart(products)}
+                    className="border btn border-black text-white bg-black p-2"
+                  >
+                    remove from cart
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => addToCart(products)}
+                    className="border btn border-black text-white bg-black p-2"
+                  >
+                    add to cart
+                  </button>
+                )}
               </div>
             );
           })}

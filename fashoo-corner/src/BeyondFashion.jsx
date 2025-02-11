@@ -21,7 +21,7 @@ function BeyondFashion() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
-  const { addToCart } = useContext(CartContext);
+  const { addToCart, cartItems, removeFromCart } = useContext(CartContext);
   const randomProducts = () => {
     setLoading(true);
     setErrorMessage("");
@@ -102,6 +102,7 @@ function BeyondFashion() {
           }}
         >
           {products.map((product) => {
+            const cartItem = cartItems.find((item) => item.id === product.id);
             return (
               <div className="flex h-96 p-5 cursor-pointer flex-col items-center justify-center gap-2 ">
                 <NavLink to={`products-details/${product.id}`} key={product.id}>
@@ -118,12 +119,21 @@ function BeyondFashion() {
                     ${`${product.price.toFixed(2)}`}
                   </p>
                 </NavLink>
-                <button
-                  onClick={() => addToCart(product)}
-                  className="border btn border-black font-medium bg-black text-white p-2  "
-                >
-                  Add to Cart
-                </button>
+                {cartItem ? (
+                  <button
+                    onClick={() => removeFromCart(product)}
+                    className="border btn border-black text-white bg-black p-2"
+                  >
+                    remove from cart
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => addToCart(product)}
+                    className="border btn border-black text-white bg-black p-2"
+                  >
+                    add to cart
+                  </button>
+                )}
               </div>
             );
           })}

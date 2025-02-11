@@ -8,7 +8,7 @@ import { CartContext } from "./CartProvider";
 function Shoes() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const { addToCart } = useContext(CartContext);
+  const { addToCart, cartItems, removeFromCart } = useContext(CartContext);
 
   function fetchData() {
     setProducts(shoes);
@@ -70,6 +70,7 @@ function Shoes() {
 
       <div className="grid grid-cols-2 lg:grid-cols-3 grid-rows-2 gap-x-4 gap-y-7 p-4">
         {products.map((product) => {
+          const cartItem = cartItems.find((item) => item.id === product.id);
           return (
             <>
               <div
@@ -92,12 +93,21 @@ function Shoes() {
                   <p>{product.price}</p>
                 </NavLink>
 
-                <button
-                  onClick={() => addToCart(product)}
-                  className="border btn border-black font-medium bg-black text-white p-2"
-                >
-                  Add to cart
-                </button>
+                {cartItem ? (
+                  <button
+                    onClick={() => removeFromCart(product)}
+                    className="border btn border-black text-white bg-black p-2"
+                  >
+                    remove from cart
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => addToCart(product)}
+                    className="border btn border-black text-white bg-black p-2"
+                  >
+                    add to cart
+                  </button>
+                )}
               </div>
             </>
           );

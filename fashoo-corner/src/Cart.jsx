@@ -87,6 +87,9 @@ function Cart() {
                   </div>
                   <div className="grid bg-red-50 grid-cols-2 grid-rows-2 mt-5">
                     {clothing.slice(0, 4).map((clothings) => {
+                      const cartItem = cartItems.find(
+                        (cartItem) => cartItem.id === clothings.id
+                      );
                       return (
                         <>
                           <div
@@ -104,12 +107,18 @@ function Cart() {
                             <p className="text-neutral-600 text-center">
                               {clothings.name}
                             </p>
-                            <button
-                              onClick={() => addToCart(clothings)}
-                              className="btn w-full bg-black text-white"
-                            >
-                              add to cart
-                            </button>
+                            {cartItem ? (
+                              <button onClick={() => removeFromCart()}>
+                                remove from cart
+                              </button>
+                            ) : (
+                              <button
+                                onClick={() => addToCart(clothings)}
+                                className="btn w-full bg-black text-white"
+                              >
+                                add to cart
+                              </button>
+                            )}
                           </div>
                         </>
                       );

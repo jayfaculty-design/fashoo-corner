@@ -77,22 +77,13 @@ function ShopNavTop() {
                 }}
               />
               <div className="hidden lg:flex item-center gap-5 text-[14px] font-sans">
-                <Link
-                  to="fashion"
-                  className=" text-oranges font-semibold lowercase hover:text-oranges"
-                >
+                <Link className=" text-oranges font-semibold lowercase hover:text-oranges">
                   fashion
                 </Link>
-                <Link
-                  className="text-black font-semibold lowercase hover:text-indigo-600 transition-all ease-in-out"
-                  to="beauty"
-                >
+                <Link className="text-black font-semibold lowercase hover:text-indigo-600 transition-all ease-in-out">
                   beauty
                 </Link>
-                <Link
-                  className="text-black font-semibold lowercase hover:text-indigo-600 transition-all ease-in-out"
-                  to="home"
-                >
+                <Link className="text-black font-semibold lowercase hover:text-indigo-600 transition-all ease-in-out">
                   home
                 </Link>
               </div>
