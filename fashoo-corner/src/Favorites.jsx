@@ -65,7 +65,7 @@ function Favorites() {
                 <div className="">
                   <div key={item.id} className="flex flex-col gap-2 w-[150px]">
                     <img
-                      src={`${item.image || item.image_url || item.images[0]}`}
+                      src={`${item.image || item.image_url}`}
                       alt={`${item.name} image`}
                       className="w-[150px]"
                     />
@@ -73,9 +73,7 @@ function Favorites() {
                       {item.name || item.title}
                     </p>
                     <div className="w-[150px] flex justify-between">
-                      <p className="font-bold font-sans">
-                        ${item.price.toFixed(2)}
-                      </p>
+                      <p className="font-bold font-sans">${item.price}</p>
                       <FontAwesomeIcon
                         onClick={() => removeFromFavorites(item)}
                         icon={faTrash}
