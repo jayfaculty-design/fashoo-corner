@@ -85,7 +85,7 @@ This project is licensed under the MIT License.
 For any inquiries or contributions, feel free to reach out:
 
 - **Email:** izfaculty12@gmail.com
-- **GitHub:** [jayfaculty-designs]([](https://github.com/jayfaculty-design/)
+- **GitHub:** [jayfaculty-designs](https://github.com/jayfaculty-design/)
 
 ---
 
